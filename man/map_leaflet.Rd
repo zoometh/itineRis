@@ -11,6 +11,7 @@ map_leaflet(
   y_column = "y",
   color.point = "red",
   radius.point = 5,
+  export.plot = F,
   out.plot = "map_sites.html",
   dirOut = paste0(system.file(package = "itineRis"), "/results/")
 )
@@ -19,7 +20,11 @@ map_leaflet(
 \item{df.path}{the path to the dataframe. This dataframe must have at least three columns:
 one for the site name (by defaut 'site'), two for the coordinates (by default, 'x' and 'y')}
 
-\item{out.plot}{the path and name of the created map}
+\item{export.plot}{if TRUE, export the map}
+
+\item{out.plot}{the name of the output map}
+
+\item{dirOut}{path of the output directory}
 }
 \value{
 a leaflet interactive map

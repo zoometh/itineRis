@@ -14,7 +14,8 @@
 #' df.isotop <- isotop_dataframe()
 #'
 #' @export
-isotop_dataframe<- function(df.path = paste0(system.file(package = "itineRis"), "/extdata/isotops_results.tsv"),
+isotop_dataframe<- function(df.path = paste0(system.file(package = "itineRis"),
+                                             "/extdata/isotop_results.tsv"),
                             color.column = "object"){
   if(DescTools::SplitPath(df.path)$extension == "tsv"){sep = "\t"}
   if(DescTools::SplitPath(df.path)$extension == "csv"){sep = ";"}

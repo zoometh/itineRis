@@ -5,7 +5,7 @@
 \title{Create a simple dataframe with colors depending on a field}
 \usage{
 isotop_dataframe(
-  df.path = paste0(system.file(package = "itineRis"), "/extdata/isotops_results.tsv"),
+  df.path = paste0(system.file(package = "itineRis"), "/extdata/isotop_results.tsv"),
   color.column = "object"
 )
 }

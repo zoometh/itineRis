@@ -4,7 +4,10 @@
 #'
 #' @param df.path the path to the dataframe. This dataframe must have at least three columns:
 #' one for the site name (by defaut 'site'), two for the coordinates (by default, 'x' and 'y')
-#' @param out.plot the path and name of the created map
+#' @param export.plot if TRUE, export the map
+#' @param out.plot the name of the output map
+#' @param dirOut path of the output directory
+#'
 #'
 #' @return a leaflet interactive map
 #'
