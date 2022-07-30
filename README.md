@@ -7,7 +7,7 @@
 Install the R package
 
 ```
-devtools::install_github("eamena-oxford/itineRis")
+devtools::install_github("zoometh/itineRis")
 ```
 
 And load the package
