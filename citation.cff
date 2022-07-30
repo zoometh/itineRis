@@ -4,8 +4,8 @@ authors:
 - family-names: "Huet"
   given-names: "Thomas"
   orcid: "https://orcid.org/0000-0002-1112-6122"
-title: "Usewear"
+title: "ItineRis"
 version: 0.0.0.9000
 doi: 
 date-released: 
-url: "https://github.com/zoometh/usewear"
+url: "https://github.com/zoometh/itineRis"

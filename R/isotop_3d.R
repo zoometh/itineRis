@@ -60,7 +60,7 @@ isotop_3d <- function(df = NA,
   )
   if (export.plot) {
     dir.create(dirOut, showWarnings = FALSE)
-    htmlwidgets::saveWidget(d3, out.plot)
+    htmlwidgets::saveWidget(d3, paste0(dirOut, out.plot))
     print(paste("interactive 3D plot '", out.plot, "' created in '", dirOut, "'"))
   } else {
     print(d3)
