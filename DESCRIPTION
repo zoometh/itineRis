@@ -1,0 +1,19 @@
+Package: itineRis
+Title: R package for the ANR Itineris
+Version: 0.0.0.999
+Authors@R: c(person("Thomas","Huet", role = c("aut","cre"), email = c("thomashuet7@gmail.com"), comment=c(ORCID="0000-0002-1112-6122"))) 
+Description: Multi-paradigm functions for the French ANR project Itineris (coord. V. Cicolani)
+License: CC-BY
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Imports:
+  plotly,
+  htmlwidgets,
+	dplyr,
+	DescTools
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+BugsReport: https://github.com/zoometh/usewear/issues
