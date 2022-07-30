@@ -19,6 +19,7 @@ map_leaflet <- function(df.path = paste0(system.file(package = "itineRis"), "/ex
                         y_column = "y",
                         color.point = "red",
                         radius.point = 5,
+                        export.plot = F,
                         out.plot = "map_sites.html",
                         dirOut = paste0(system.file(package = "itineRis"), "/results/")){
   if(DescTools::SplitPath(df.path)$extension == "tsv"){sep = "\t"}
