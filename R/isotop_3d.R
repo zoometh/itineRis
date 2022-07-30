@@ -6,6 +6,8 @@
 #' @param vars the names of the columns where the isotops measurments are
 #' @param color.column conventionaly it is 'color', dot, and the name of the field
 #' used to get the colors. By default 'object' ('color.object')
+#' @param background.color color of the plotly background, 'black' or 'white',
+#'  by default 'black'
 #' @param title.plot the title of the plot
 #' @param export.plot if TRUE, export the plot
 #' @param out.plot the name of the output 3D plot
@@ -23,25 +25,39 @@
 isotop_3d <- function(df = NA,
                       vars = c("var1", "var2", "var3"),
                       color.column = "color.object",
+                      background.color = "black",
                       title.plot = 'Isotop measures',
                       export.plot = FALSE,
                       out.plot = "isotop_3d.html",
                       dirOut = paste0(system.file(package = "itineRis"), "/results/")){
   type <- unlist(stringr::str_split(color.column, "\\."))[2]
+  if(background.color == "black"){
+    bg.color <- c('rgb(0, 0, 0)', 'rgb(255, 255, 255)', "white")
+  } else {
+    bg.color <- c('rgb(255, 255, 255)', 'rgb(0, 0, 0)', "black")
+  }
   d3 <- plotly::plot_ly(df,
                         x = df[ , vars[1]],
                         y = df[ , vars[2]],
                         z = df[ , vars[3]],
                         color = df[ , type],
                         colors = df[ , color.column],
-                        #symbol = df[ , type],
                         hoverinfo = 'text',
                         text = df[ , type])
-  d3 <- d3 %>% plotly::add_markers()
-  d3 <- d3 %>% plotly::layout(title = title.plot,
-                              scene = list(xaxis = list(title = vars[1]),
-                                           yaxis = list(title = vars[2]),
-                                           zaxis = list(title = vars[3])))
+  d3 <- d3 %>% add_markers()
+  d3 <- d3 %>% layout(scene = list(xaxis = list(gridcolor = bg.color[2],
+                                                ticklen = 5,
+                                                gridwidth = 2),
+                                   yaxis = list(gridcolor = bg.color[2],
+                                                ticklen = 5,
+                                                gridwith = 2),
+                                   zaxis = list(gridcolor = bg.color[2],
+                                                ticklen = 5,
+                                                gridwith = 2)),
+                      paper_bgcolor = bg.color[1],
+                      plot_bgcolor = bg.color[1],
+                      font = list(color = bg.color[3])
+  )
   if (export.plot) {
     dir.create(dirOut, showWarnings = FALSE)
     htmlwidgets::saveWidget(d3, out.plot)
@@ -50,4 +66,3 @@ isotop_3d <- function(df = NA,
     print(d3)
   }
 }
-
