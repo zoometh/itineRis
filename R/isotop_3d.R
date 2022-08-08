@@ -44,19 +44,19 @@ isotop_3d <- function(df = NA,
                         colors = df[ , color.column],
                         hoverinfo = 'text',
                         text = df[ , type])
-  d3 <- d3 %>% add_markers()
-  d3 <- d3 %>% layout(scene = list(xaxis = list(gridcolor = bg.color[2],
-                                                ticklen = 5,
-                                                gridwidth = 2),
-                                   yaxis = list(gridcolor = bg.color[2],
-                                                ticklen = 5,
-                                                gridwith = 2),
-                                   zaxis = list(gridcolor = bg.color[2],
-                                                ticklen = 5,
-                                                gridwith = 2)),
-                      paper_bgcolor = bg.color[1],
-                      plot_bgcolor = bg.color[1],
-                      font = list(color = bg.color[3])
+  d3 <- d3 %>%  plotly::add_markers()
+  d3 <- d3 %>%  plotly::layout(scene = list(xaxis = list(gridcolor = bg.color[2],
+                                                         ticklen = 5,
+                                                         gridwidth = 2),
+                                            yaxis = list(gridcolor = bg.color[2],
+                                                         ticklen = 5,
+                                                         gridwith = 2),
+                                            zaxis = list(gridcolor = bg.color[2],
+                                                         ticklen = 5,
+                                                         gridwith = 2)),
+                               paper_bgcolor = bg.color[1],
+                               plot_bgcolor = bg.color[1],
+                               font = list(color = bg.color[3])
   )
   if (export.plot) {
     dir.create(dirOut, showWarnings = FALSE)
