@@ -8,6 +8,7 @@ isotop_3d(
   df = NA,
   vars = c("var1", "var2", "var3"),
   color.column = "color.object",
+  background.color = "black",
   title.plot = "Isotop measures",
   export.plot = FALSE,
   out.plot = "isotop_3d.html",
@@ -21,6 +22,9 @@ isotop_3d(
 
 \item{color.column}{conventionaly it is 'color', dot, and the name of the field
 used to get the colors. By default 'object' ('color.object')}
+
+\item{background.color}{color of the plotly background, 'black' or 'white',
+by default 'black'}
 
 \item{title.plot}{the title of the plot}
 

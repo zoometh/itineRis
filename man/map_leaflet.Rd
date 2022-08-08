@@ -5,7 +5,9 @@
 \title{Create an HTML interactive map for the site distribution}
 \usage{
 map_leaflet(
-  df.path = paste0(system.file(package = "itineRis"), "/extdata/sites_coords.tsv"),
+  d = NA,
+  d.coords = NA,
+  df.path = NA,
   site_column = "site",
   x_column = "x",
   y_column = "y",
@@ -17,8 +19,9 @@ map_leaflet(
 )
 }
 \arguments{
-\item{df.path}{the path to the dataframe. This dataframe must have at least three columns:
-one for the site name (by defaut 'site'), two for the coordinates (by default, 'x' and 'y')}
+\item{d}{a hash dictionnary-like object to store the data. By default NA}
+
+\item{df.path}{the path to the dataframe. This dataframe must have at least three columns: one for the site name (by defaut 'site'), two for the coordinates (by default, 'x' and 'y'). By default NA, then will read the `d` variable}
 
 \item{export.plot}{if TRUE, export the map}
 
@@ -34,6 +37,13 @@ a leaflet interactive map
 }
 \examples{
 
-map_leaflet(color.point = "blue")
+d <- hash::hash()
+d <- read_mines(d = d,
+                df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx")
+map_leaflet(d = d, d.coords = "mines.coords", export.plot = T)
+
+
+map_leaflet(df.path = paste0(system.file(package = "itineRis"), "/extdata/sites_coords.tsv"),
+            color.point = "blue")
 
 }

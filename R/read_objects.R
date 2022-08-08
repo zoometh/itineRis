@@ -19,7 +19,10 @@
 #' d <- hash::hash()
 #' d <- read_objects(d = d,
 #'                   df.path = "C:/Rprojects/itineRis/results/LIA data objects.xlsx",
-#'                   header.line = 2)
+#'                   header.line = 2,
+#'                   export.dataframe = T,
+#'                   out.df = "isotop_results.tsv",
+#'                   dirOut = "C:/Rdev-itineris/itineris/data/")
 #'
 #' @export
 read_objects <- function(d = NA,
@@ -100,13 +103,3 @@ read_objects <- function(d = NA,
   d[["lia"]] <- df.lia
   return(d)
 }
-
-d <- hash::hash()
-d <- read_objects(d = d,
-                  df.path = "C:/Rprojects/itineRis/results/LIA data objects.xlsx",
-                  header.line = 2,
-                  export.dataframe = T,
-                  out.df = "isotop_results.tsv",
-                  dirOut = "C:/Rdev-itineris/itineris/data/")
-
-
