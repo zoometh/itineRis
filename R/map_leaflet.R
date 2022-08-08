@@ -63,7 +63,8 @@ map_leaflet <- function(d = NA,
     leaflet::addScaleBar(position = "bottomright")
   if (export.plot) {
     dir.create(dirOut, showWarnings = FALSE)
-    htmlwidgets::saveWidget(ea.map, out.plot)
+    path.out <- paste0(dirOut, out.plot)
+    htmlwidgets::saveWidget(ea.map, path.out)
     print(paste0("interactive map '", out.plot, "' created in '", dirOut, "'"))
   } else {
     print(ea.map)

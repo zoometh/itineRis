@@ -73,7 +73,3 @@ read_mines <- function(d = NA,
   }
   return(d)
 }
-
-d <- hash::hash()
-d <- read_mines(d = d,
-                df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx")
