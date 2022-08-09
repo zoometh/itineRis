@@ -1,5 +1,5 @@
 #' Read the dataset of mines
-#' @name read_mines
+#' @name read_coords
 #' @description Read the dataset of mines. Will store every spreadsheet under its name within the hash object (e.g. "France")
 #'
 #' @param d a hash dictionnary-like object to store the data
@@ -13,17 +13,17 @@
 #' @examples
 #'
 #' d <- hash::hash()
-#' d <- read_mines(d = d,
+#' d <- read_coords(d = d,
 #'                 df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx")
 #'
 #' @export
-read_mines <- function(d = NA,
-                       df.path = paste0(system.file(package = "itineRis"),
-                                        "/extdata/Coordinates-mines_Thomas Huet.xlsx"),
-                       df.sheetnames = c("all"),
-                       extract.mines = TRUE,
-                       pattern.mines.name = "locality",
-                       pattern.mines.coords = c("longitude", "latitude")){
+read_coords <- function(d = NA,
+                        df.path = paste0(system.file(package = "itineRis"),
+                                         "/extdata/Coordinates-mines_Thomas Huet.xlsx"),
+                        df.sheetnames = c("all"),
+                        extract.mines = TRUE,
+                        pattern.mines.name = "locality",
+                        pattern.mines.coords = c("longitude", "latitude")){
   l.keys <- c()
   if("all" %in% df.sheetnames){
     for(sheetname in openxlsx::getSheetNames(df.path)){
