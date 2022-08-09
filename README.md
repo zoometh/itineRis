@@ -42,17 +42,29 @@ d <- read_lia(d = d,
               df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx",
               header.line = 1)
 ```
-
-Create a Plotly plot (3D interactive) where LIA measurements of objects and mines are displayed
+Group the datasets and assign colors
 
 ```
 library(dplyr)
 
 mydf <- rbind(d$lia.mines, d$lia.objects)
 df.isotop <- isotop_dataframe(mydf)
+df.isotop[df.isotop$object == "golasecca", "color.object"] <- "#0000FF"
+df.isotop[df.isotop$object == "hochdorf", "color.object"] <- "#00FFFF"
+df.isotop[df.isotop$object == "France", "color.object"] <- "#FF0000"
+df.isotop[df.isotop$object == "France", "symbol"] <- "triangle"
+df.isotop[df.isotop$object == "Iberian Peninsula", "color.object"] <- "#FFA500"
+df.isotop[df.isotop$object == "Iberian Peninsula", "symbol"] <- "triangle"
+df.isotop[df.isotop$object == "Switzerland", "color.object"] <- "#964B00"
+df.isotop[df.isotop$object == "Switzerland", "symbol"] <- "triangle"
+```
+
+Create a Plotly plot (3D interactive) where LIA measurements of objects and mines are displayed
+
+```
 isotop_3d(df.isotop,
           vars = c("Pb206_Pb204", "Pb207_Pb204", "Pb208_Pb204"),
-          marker.size = 3,
+          marker.size = 5,
           export.plot = T,
           out.plot = "isotop_3d.html",
           dirOut = "C:/Rprojects/itineRis/results/")

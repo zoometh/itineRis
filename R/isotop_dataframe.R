@@ -36,6 +36,7 @@ isotop_dataframe<- function(df = NA,
   df.colors[[color.var]] <- rainbow(length(u.colors))
   df.isotop <- merge(df, df.colors, by = "type")
   df.isotop$type <- NULL
+  df.isotop$symbol <- "circle"
   return(df.isotop)
 }
 
