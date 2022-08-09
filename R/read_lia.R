@@ -117,14 +117,3 @@ read_lia <- function(d = NA,
   d[[d.tag]] <- df.lia
   return(d)
 }
-
-library(dplyr)
-
-mydf <- rbind(d$lia.mines, d$lia.objects)
-df.isotop <- isotop_dataframe(mydf)
-isotop_3d(df.isotop,
-          vars = c("Pb206_Pb204", "Pb207_Pb204", "Pb208_Pb204"),
-          marker.size = 3,
-          export.plot = F,
-          out.plot = "isotop_3d.html",
-          dirOut = "C:/Rprojects/itineRis/results/")

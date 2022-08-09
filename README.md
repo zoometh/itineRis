@@ -20,7 +20,46 @@ By default, output will be saved in the `results/` folder. You can change the ou
 
 # 3D interactive plot of LIA
 
-Read the LIA dataframe and create a Plotly plot (3D interactive)
+Create an hash object to store the results
+
+```
+d <- hash::hash()
+```
+
+Read the LIA measures for objects and mines
+
+```
+d <- read_lia(d = d,
+              d.tag = "lia.objects",
+              df.path = "C:/Rprojects/itineRis/results/LIA data objects.xlsx",
+              header.line = 2)
+d <- read_lia(d = d,
+              d.tag = "lia.mines",
+              pattern.objects.num = "Locality/.Mine",
+              pattern.objects.Pb206_Pb204 = "206Pb/204Pb",
+              pattern.objects.Pb207_Pb204 = "207Pb/204Pb",
+              pattern.objects.Pb208_Pb204 = "208Pb/204Pb",
+              df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx",
+              header.line = 1)
+```
+
+Create a Plotly plot (3D interactive) where LIA measurements of objects and mines are displayed
+
+```
+library(dplyr)
+
+mydf <- rbind(d$lia.mines, d$lia.objects)
+df.isotop <- isotop_dataframe(mydf)
+isotop_3d(df.isotop,
+          vars = c("Pb206_Pb204", "Pb207_Pb204", "Pb208_Pb204"),
+          marker.size = 3,
+          export.plot = T,
+          out.plot = "isotop_3d.html",
+          dirOut = "C:/Rprojects/itineRis/results/")
+```
+
+## A simplier example...
+
 
 ```
 library(dplyr)
