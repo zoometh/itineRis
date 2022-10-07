@@ -1,12 +1,13 @@
 #' Create a simple dataframe with colors depending on a field
 #' @name isotop_dataframe
 #' @description Creates a new colum for the color based on another column. For example 'color.objects'
-#' means the colors are based on the 'object' field
+#' means the colors are based on the 'object' field (selected by default)
 #'
 #' @param df a dataframe. By defaut NA, so it will read a file using `df.path`
 #' @param df.path if `df` is NA, will use this path and name to read the dataset from a file. Either a TSV or a CSV with ';' separators.
 #' @param color.column the name on which the different colors will be setup. By default, the colors
 #' are those of the objects
+#' @verbose if TRUE, print messages
 #'
 #' @return a dataframe with an hexadecimal value for the colors
 #'
@@ -18,15 +19,16 @@
 isotop_dataframe<- function(df = NA,
                             df.path = paste0(system.file(package = "itineRis"),
                                              "/extdata/isotop_results.tsv"),
-                            color.column = "object"){
+                            color.column = "object",
+                            verbose = TRUE){
   if(is.na(df)){
     if(DescTools::SplitPath(df.path)$extension == "tsv"){sep = "\t"}
     if(DescTools::SplitPath(df.path)$extension == "csv"){sep = ";"}
     df <- read.table(df.path, sep = sep, header = T)
+    if(verbose){print(paste0("column names of '",
+                             DescTools::SplitPath(df.path)$fullfilename,
+                             "' are: ", paste0(colnames(df), collapse = ", ")))}
   }
-  print(message(paste0("column names of '",
-                       DescTools::SplitPath(df.path)$fullfilename,
-                       "' are: ", paste0(colnames(df), collapse = ", "))))
   u.colors <- unique(df[, color.column])
   df$type <- df[, color.column]
   df.colors <- data.frame(type = u.colors,

@@ -1,17 +1,17 @@
 #' Read XLSX dataset of lead isotop analysis (LIA)
 #' @name read_lia
-#' @description Read the dataset of objects. Will store every spreadsheet under its name within the hash object (e.g. "golasecca")
+#' @description Read the dataset of objects. Will store every spreadsheet under its name within a hash object (e.g. "golasecca")
 #'
-#' @param d a hash dictionnary-like object to store the data
-#' @param d.tag the new field in `d`. By default, 'lia'
+#' @param d a hash dictionnary-like object to store the data.
+#' @param d.tag the new field in `d`. By default, 'lia'.
 #' @param df.path the path and name of the dataset. An XLSX file.
-#' @param df.sheetnames the name or index of the spreadsheet(s) to be read. By default "all" will read all the spreadsheets
-#' @param header.line the row of the headers, by default the first line
-#' @param pattern.objects.num Search (regex) for this pattern in the column names to find the laboratory number. It is important to remind that R doesn't accept spaces in header that must be replcaed by dots
-#' @param pattern.objects.Pb206_Pb204,pattern.objects.Pb207_Pb204,pattern.objects.Pb208_Pb204 Search (regex) for these patterns in the column names to find the LIA measurements
-#' @param export.plot if TRUE, export the dataframe
-#' @param out.plot the name of the output dataframe
-#' @param dirOut path of the output directory
+#' @param df.sheetnames the name or index of the spreadsheet(s) to be read. By default "all" will read all the spreadsheets.
+#' @param header.line the row of the headers, by default the first line.
+#' @param pattern.objects.num Search (regex) for this pattern in the column names to find the laboratory number. It is important to remind that R doesn't accept spaces in header that must be replcaed by dots.
+#' @param pattern.objects.Pb206_Pb204,pattern.objects.Pb207_Pb204,pattern.objects.Pb208_Pb204 Search (regex) for these patterns in the column names to find the LIA measurements.
+#' @param export.plot if TRUE, export the dataframe.
+#' @param out.plot the name of the output dataframe.
+#' @param dirOut path of the output directory.
 #'
 #' @return A hash with a new entrance. If export is TRUE, will export as TSV
 #'

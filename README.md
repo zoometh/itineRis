@@ -20,7 +20,7 @@ By default, output will be saved in the `results/` folder. You can change the ou
 
 # 3D interactive plot of LIA
 
-Create an hash object to store the results
+Create an hash object to store the results of lead isotopic analysis (LIA)
 
 ```
 d <- hash::hash()

@@ -24,14 +24,16 @@
 #' @export
 isotop_3d <- function(df = NA,
                       vars = c("var1", "var2", "var3"),
-                      color.column = "color.object",
                       marker.size = 5,
+                      symbols = "circle",
+                      color = NA,
+                      colors = NA,
                       background.color = "black",
                       title.plot = 'LIA measurements',
                       export.plot = FALSE,
                       out.plot = "isotop_3d.html",
                       dirOut = paste0(system.file(package = "itineRis"), "/results/")){
-  type <- unlist(stringr::str_split(color.column, "\\."))[2]
+  # type <- unlist(stringr::str_split(color.column, "\\."))[2]
   if(background.color == "black"){
     bg.color <- c('rgb(0, 0, 0)', 'rgb(255, 255, 255)', "white")
   } else {
@@ -42,11 +44,13 @@ isotop_3d <- function(df = NA,
                         y = df[ , vars[2]],
                         z = df[ , vars[3]],
                         size = marker.size,
-                        symbols = df[ , "symbol"],
-                        color = df[ , type],
-                        colors = df[ , color.column],
+                        symbols = ~symbols,
+                        color = ~color,
+                        colors = ~colors,
+                        # color = df[ , type],
+                        # colors = df[ , color.column],
                         hoverinfo = 'text',
-                        text = df[ , type])
+                        text = df[ , 'object'])
   d3 <- d3 %>%  plotly::add_markers()
   d3 <- d3 %>%  plotly::layout(scene = list(xaxis = list(gridcolor = bg.color[2],
                                                          ticklen = 5,
