@@ -59,6 +59,15 @@ df.isotop[df.isotop$object == "Switzerland", "color.object"] <- "#964B00"
 df.isotop[df.isotop$object == "Switzerland", "symbol"] <- "triangle"
 ```
 
+Create a ternary plot
+
+```
+isotop_ternaryplot(df.isotop)
+```
+
+<img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_ternaryplot.png" width='500px'>
+
+
 Create a Plotly plot (3D interactive) where LIA measurements of objects and mines are displayed
 
 ```
