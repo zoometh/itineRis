@@ -7,8 +7,10 @@
 isotop_3d(
   df = NA,
   vars = c("var1", "var2", "var3"),
-  color.column = "color.object",
   marker.size = 5,
+  symbols = "circle",
+  color = NA,
+  colors = NA,
   background.color = "black",
   title.plot = "LIA measurements",
   export.plot = FALSE,
@@ -21,9 +23,6 @@ isotop_3d(
 
 \item{vars}{the names of the columns where the isotops measurments are}
 
-\item{color.column}{conventionaly it is 'color', dot, and the name of the field
-used to get the colors. By default 'object' ('color.object')}
-
 \item{background.color}{color of the plotly background, 'black' or 'white',
 by default 'black'}
 
@@ -34,6 +33,9 @@ by default 'black'}
 \item{out.plot}{the name of the output 3D plot}
 
 \item{dirOut}{path of the output directory}
+
+\item{color.column}{conventionaly it is 'color', dot, and the name of the field
+used to get the colors. By default 'object' ('color.object')}
 }
 \value{
 a plotly HML 3D plot

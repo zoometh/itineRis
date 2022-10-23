@@ -20,31 +20,31 @@ read_lia(
 )
 }
 \arguments{
-\item{d}{a hash dictionnary-like object to store the data}
+\item{d}{a hash dictionnary-like object to store the data.}
 
-\item{d.tag}{the new field in `d`. By default, 'lia'}
+\item{d.tag}{the new field in `d`. By default, 'lia'.}
 
 \item{df.path}{the path and name of the dataset. An XLSX file.}
 
-\item{df.sheetnames}{the name or index of the spreadsheet(s) to be read. By default "all" will read all the spreadsheets}
+\item{df.sheetnames}{the name or index of the spreadsheet(s) to be read. By default "all" will read all the spreadsheets.}
 
-\item{header.line}{the row of the headers, by default the first line}
+\item{header.line}{the row of the headers, by default the first line.}
 
-\item{pattern.objects.num}{Search (regex) for this pattern in the column names to find the laboratory number. It is important to remind that R doesn't accept spaces in header that must be replcaed by dots}
+\item{pattern.objects.num}{Search (regex) for this pattern in the column names to find the laboratory number. It is important to remind that R doesn't accept spaces in header that must be replcaed by dots.}
 
-\item{pattern.objects.Pb206_Pb204, pattern.objects.Pb207_Pb204, pattern.objects.Pb208_Pb204}{Search (regex) for these patterns in the column names to find the LIA measurements}
+\item{pattern.objects.Pb206_Pb204, pattern.objects.Pb207_Pb204, pattern.objects.Pb208_Pb204}{Search (regex) for these patterns in the column names to find the LIA measurements.}
 
-\item{dirOut}{path of the output directory}
+\item{dirOut}{path of the output directory.}
 
-\item{export.plot}{if TRUE, export the dataframe}
+\item{export.plot}{if TRUE, export the dataframe.}
 
-\item{out.plot}{the name of the output dataframe}
+\item{out.plot}{the name of the output dataframe.}
 }
 \value{
 A hash with a new entrance. If export is TRUE, will export as TSV
 }
 \description{
-Read the dataset of objects. Will store every spreadsheet under its name within the hash object (e.g. "golasecca")
+Read the dataset of objects. Will store every spreadsheet under its name within a hash object (e.g. "golasecca")
 }
 \examples{
 

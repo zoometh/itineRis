@@ -16,11 +16,11 @@
 #' df.isotop <- isotop_dataframe()
 #'
 #' @export
-isotop_dataframe<- function(df = NA,
-                            df.path = paste0(system.file(package = "itineRis"),
-                                             "/extdata/isotop_results.tsv"),
-                            color.column = "object",
-                            verbose = TRUE){
+isotop_dataframe <- function(df = NA,
+                             df.path = paste0(system.file(package = "itineRis"),
+                                              "/extdata/isotop_results.tsv"),
+                             color.column = "object",
+                             verbose = TRUE){
   if(is.na(df)){
     if(DescTools::SplitPath(df.path)$extension == "tsv"){sep = "\t"}
     if(DescTools::SplitPath(df.path)$extension == "csv"){sep = ";"}
@@ -38,7 +38,9 @@ isotop_dataframe<- function(df = NA,
   df.colors[[color.var]] <- rainbow(length(u.colors))
   df.isotop <- merge(df, df.colors, by = "type")
   df.isotop$type <- NULL
+  # by default
   df.isotop$symbol <- "circle"
+  df.isotop$color.object <- "#0000FF"
   return(df.isotop)
 }
 

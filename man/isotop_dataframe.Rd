@@ -7,7 +7,8 @@
 isotop_dataframe(
   df = NA,
   df.path = paste0(system.file(package = "itineRis"), "/extdata/isotop_results.tsv"),
-  color.column = "object"
+  color.column = "object",
+  verbose = TRUE
 )
 }
 \arguments{
@@ -23,7 +24,7 @@ a dataframe with an hexadecimal value for the colors
 }
 \description{
 Creates a new colum for the color based on another column. For example 'color.objects'
-means the colors are based on the 'object' field
+means the colors are based on the 'object' field (selected by default)
 }
 \examples{
 

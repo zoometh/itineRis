@@ -48,7 +48,7 @@ Group the datasets and assign colors
 library(dplyr)
 
 mydf <- rbind(d$lia.mines, d$lia.objects)
-df.isotop <- isotop_dataframe(mydf)
+df.isotop <- isotop_dataframe(df = mydf, df.path = NA)
 df.isotop[df.isotop$object == "golasecca", "color.object"] <- "#0000FF"
 df.isotop[df.isotop$object == "hochdorf", "color.object"] <- "#00FFFF"
 df.isotop[df.isotop$object == "France", "color.object"] <- "#FF0000"
