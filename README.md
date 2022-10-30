@@ -42,7 +42,7 @@ d <- read_lia(d = d,
               df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx",
               header.line = 1)
 ```
-Group the datasets and assign colors
+Group the datasets, assign colors and symbols
 
 ```
 library(dplyr)
@@ -99,7 +99,13 @@ isotop_3d(df.isotop,
 
 Gives:
 
+
+<center>
+
 <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_3d.png" width='500px'>
+https://zoometh.github.io/itineRis/results/isotop_3d
+
+</center>
 
 # Interactive map of mines
 
@@ -118,4 +124,12 @@ map_leaflet(d = d,
 
 Gives:
 
+<center>
+
 <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/map_sites.png" width='500px'>
+https://anr-itineris.github.io/itineris/data/map_sites.html
+
+
+</center>
+
+
