@@ -81,13 +81,35 @@ isotop_3d(df.isotop,
 
 ## In Shiny
 
+A similar function is hosted on a Shiny Server: http://shinyserver.cfs.unipi.it:3838/teach/stats/dim3/
+
 <p align="center">
   <img alt="img-name" src="results/isotop-ternaryplot-shiny.png" width="700">
   <br>
-    <em>screenshot of the Google sheet mapping file: https://docs.google.com/spreadsheets/d/1nXgz98mGOySgc0Q2zIeT1RvHGNl4WRq1Fp9m5qB8g8k/edit?usp=sharing</em>
+    <em>landing page of the interactive <a href="http://shinyserver.cfs.unipi.it:3838/teach/stats/dim3/">Shiny ternary plot</a> </em>
 </p>
 
+The parameter (`objects`, `mines`, `kmeans`) can be selected with the input box:
 
+  - `objects`: categories of objects (by default `golasecca` or `hordorf`)
+  - `mines`: the mines' countries (by default `France`, `Iberian Peninsula`, or `Switzerland`) 
+  - `kmeans`: the number of centers or clusters (by default between `1` to `5`)[^1]
+
+<p align="center">
+  <img alt="img-name" src="results/isotop-ternaryplot-shiny-select.png" width="700">
+  <br>
+    <em>input selection</em>
+</p>
+
+Use the Zoom tool to select a region of the plot (to zoom out, double-click)
+
+<p align="center">
+  <img alt="img-name" src="results/isotop-ternaryplot-shiny-zoom.png" width="700">
+  <br>
+    <em>Zoom in</em>
+</p>
+
+The 
 
 ## A simplier example...
 
@@ -141,4 +163,7 @@ https://anr-itineris.github.io/itineris/data/map_sites.html
   
 </center>
 
+---
+
+[^1]: the Kmeans (R function `kmeans()`) is run on the selected `objects` and `mines`. It tags every sample with the number of its cluster ()
 
