@@ -92,8 +92,8 @@ A similar function is hosted on a Shiny Server: http://shinyserver.cfs.unipi.it:
 The parameter (`objects`, `mines`, `kmeans`) can be selected with the input box:
 
   - `objects`: categories of objects (by default `golasecca` or `hordorf`)
-  - `mines`: the mines' countries (by default `France`, `Iberian Peninsula`, or `Switzerland`) 
-  - `kmeans`: the number of centers or clusters (by default between `1` to `5`)[^1]
+  - `mines`: mines' countries (by default `France`, `Iberian Peninsula`, or `Switzerland`) 
+  - `kmeans`: number of Kmeans[^1] centers, or clusters (by default between `1` to `5`)
 
 <p align="center">
   <img alt="img-name" src="results/isotop-ternaryplot-shiny-select.png" width="350">
@@ -101,7 +101,7 @@ The parameter (`objects`, `mines`, `kmeans`) can be selected with the input box:
     <em>input selection</em>
 </p>
 
-Use the Zoom tool to select a region of the plot (to zoom out, double-click)
+Use the Zoom tool to select a region of the plot (to zoom out, double click).
 
 <p align="center">
   <img alt="img-name" src="results/isotop-ternaryplot-shiny-zoom.png" width="700">
@@ -109,10 +109,10 @@ Use the Zoom tool to select a region of the plot (to zoom out, double-click)
     <em>Zoom in</em>
 </p>
 
-The Zoom tool, the span tool, and the hover info, allow to overview the results sample by sample
+The Zoom tool, the Span tool and the Hover info allow you to view the results sample by sample.
 
 <p align="center">
-  <img alt="img-name" src="results/isotop-ternaryplot-shiny-hover.png" width="600">
+  <img alt="img-name" src="results/isotop-ternaryplot-shiny-hover.png" width="500">
   <br>
     <em>hover info for the sample `4230_08` allocated to the cluster `1`</em>
 </p>
