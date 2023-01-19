@@ -96,7 +96,7 @@ The parameter (`objects`, `mines`, `kmeans`) can be selected with the input box:
   - `kmeans`: number of Kmeans[^1] centers, or clusters (by default between `1` to `5`)
 
 <p align="center">
-  <img alt="img-name" src="results/isotop-ternaryplot-shiny-select.png" width="350">
+  <img alt="img-name" src="results/isotop-ternaryplot-shiny-select.png" width="250">
   <br>
     <em>input selection</em>
 </p>
@@ -104,7 +104,7 @@ The parameter (`objects`, `mines`, `kmeans`) can be selected with the input box:
 Use the Zoom tool to select a region of the plot (to zoom out, double click).
 
 <p align="center">
-  <img alt="img-name" src="results/isotop-ternaryplot-shiny-zoom.png" width="700">
+  <img alt="img-name" src="results/isotop-ternaryplot-shiny-zoom.png" width="600">
   <br>
     <em>Zoom in</em>
 </p>
