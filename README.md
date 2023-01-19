@@ -79,6 +79,16 @@ isotop_3d(df.isotop,
           dirOut = "C:/Rprojects/itineRis/results/")
 ```
 
+## In Shiny
+
+<p align="center">
+  <img alt="img-name" src="results/isotop-ternaryplot-shiny.png" width="700">
+  <br>
+    <em>screenshot of the Google sheet mapping file: https://docs.google.com/spreadsheets/d/1nXgz98mGOySgc0Q2zIeT1RvHGNl4WRq1Fp9m5qB8g8k/edit?usp=sharing</em>
+</p>
+
+
+
 ## A simplier example...
 
 
