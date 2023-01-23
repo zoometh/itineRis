@@ -89,7 +89,7 @@ A similar function is hosted on a Shiny Server: http://shinyserver.cfs.unipi.it:
     <em>landing page of the interactive <a href="http://shinyserver.cfs.unipi.it:3838/teach/stats/dim3/">Shiny ternary plot</a> </em>
 </p>
 
-The parameter (`objects`, `mines`, `kmeans`) can be selected with the input box:
+The parameters (`objects`, `mines`, `kmeans`) can be selected with the input box:
 
   - `objects`: categories of objects (by default `golasecca` or `hordorf`)
   - `mines`: mines' countries (by default `France`, `Iberian Peninsula`, or `Switzerland`) 
@@ -101,7 +101,7 @@ The parameter (`objects`, `mines`, `kmeans`) can be selected with the input box:
     <em>input selection</em>
 </p>
 
-Use the Zoom tool to select a region of the plot (to zoom out, double click).
+Use the Zoom tool to select a region of interest in the graph (to zoom out, double click).
 
 <p align="center">
   <img alt="img-name" src="results/isotop-ternaryplot-shiny-zoom.png" width="600">
@@ -117,6 +117,7 @@ The Zoom tool, the Span tool and the Hover info allow you to view the results sa
     <em>hover info for the sample `4230_08` allocated to the cluster `1`</em>
 </p>
 
+Each sample is tagged with the number of the Kmeans cluster to which it belongss 
 
 ## A simplier example...
 
