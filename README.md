@@ -117,7 +117,7 @@ The Zoom tool, the Span tool and the Hover info allow you to view the results sa
     <em>hover info for the sample `4230_08` allocated to the cluster `1`</em>
 </p>
 
-Each sample is tagged with the number of the Kmeans cluster to which it belongss 
+Each sample is tagged with the number of the Kmeans cluster to which it belongs. 
 
 ## A simplier example...
 
