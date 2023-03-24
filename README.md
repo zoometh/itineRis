@@ -81,7 +81,7 @@ isotop_3d(df.isotop,
 
 ## In Shiny
 
-A similar function is hosted on a Shiny Server: http://shinyserver.cfs.unipi.it:3838/teach/stats/dim3/
+A similar function is hosted on a Shiny Server: http://shinyserver.cfs.unipi.it:3838/teach/stats/stats/dim3/
 
 <p align="center">
   <img alt="img-name" src="results/isotop-ternaryplot-shiny.png" width="700">
