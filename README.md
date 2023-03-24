@@ -1,6 +1,6 @@
 # ***itineRis*** <img src="https://raw.githubusercontent.com/anr-itineris/itineris/main/www/logo.png" width='200px' align="right"/>
-> R package of the ANR-Itineris
 
+R package of the [ANR-Itineris](https://github.com/ANR-Itineris/itineris#anr-itineris-)
 
 # Install and load package
 
