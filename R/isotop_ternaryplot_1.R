@@ -1,5 +1,6 @@
 #' Create a ternary plot from a dataset
 #' @name isotop_ternaryplot
+#'
 #' @description
 #'
 #' @param df a dataframe created with the isotop_dataframe() function.
