@@ -18,9 +18,11 @@ library(itineRis)
 
 By default, output will be saved in the `results/` folder. You can change the output folder by changing the `dirOut` option in the various functions.
 
-# 3D interactive plot of LIA
 
-Create an hash object to store the results of lead isotopic analysis (LIA)
+# interactive ternary plot of LIA
+> Create an interactive ternary plot, with plotly, to visualise the results of lead isotopic analysis (LIA)
+
+Create an hash object to store 
 
 ```
 d <- hash::hash()
@@ -170,6 +172,28 @@ Gives:
 https://anr-itineris.github.io/itineris/data/map_sites.html
   
 </center>
+
+## Thesaurus
+
+The function `thesaurus()` creates interactive graphs to display the thesaurus of the project
+
+```
+thes <- "https://raw.githubusercontent.com/ANR-Itineris/itineris/main/lod/thesaurus/Itineris_th101.rdf"
+thesaurus(root = "artefact",
+          outPlot = "collapsibleTree",
+          export.plot = T,
+          outDir = "C:/Rprojects/itineRis/results/")
+```
+
+<center>
+  
+<img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/thesaurus-collapse.png" width='500px'>
+https://zoometh.github.io/itineRis/results/artefact
+  
+</center>
+
+
+
 
 ---
 
