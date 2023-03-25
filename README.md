@@ -169,7 +169,7 @@ Gives:
 <center>
   
 <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/map_sites.png" width='500px'>
-https://anr-itineris.github.io/itineris/data/map_sites.html
+https://zoometh.github.io/itineRis/results/map_sites.html
   
 </center>
 
