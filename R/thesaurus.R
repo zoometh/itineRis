@@ -110,5 +110,3 @@ thesaurus <- function(inDir = system.file("extdata", package = 'itineRis'),
     }
   }
 }
-
-
