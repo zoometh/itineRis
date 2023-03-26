@@ -66,20 +66,11 @@ Create a ternary plot
 ```
 isotop_ternaryplot(df.isotop)
 ```
-
-<img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_ternaryplot.png" width='500px'>
-
-
-Create a Plotly plot (3D interactive) where LIA measurements of objects and mines are displayed
-
-```
-isotop_3d(df.isotop,
-          vars = c("Pb206_Pb204", "Pb207_Pb204", "Pb208_Pb204"),
-          marker.size = 5,
-          export.plot = T,
-          out.plot = "isotop_3d.html",
-          dirOut = "C:/Rprojects/itineRis/results/")
-```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_ternaryplot.png" width='500px'>
+  <br>
+  <em>landing page of the interactive Plotly plot</em>
+</p>
 
 ## In Shiny
 
