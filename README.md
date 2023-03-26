@@ -120,35 +120,6 @@ The Zoom tool, the Span tool and the Hover info allow you to view the results sa
 </p>
 
 Each sample is tagged with the number of the Kmeans cluster to which it belongs. 
-
-## A simplier example...
-
-
-```
-library(dplyr)
-
-df.isotop <- isotop_dataframe(
-  df.path = paste0("C:/Rprojects/itineRis/inst/extdata/isotop_results.tsv"),
-  color.column = "object"
-)
-
-isotop_3d(df.isotop,  
-          vars = c("Pb206_Pb204", "Pb207_Pb204", "Pb208_Pb204"),
-          export.plot = T,
-          out.plot = "isotop_3d.html",
-          dirOut = "C:/Rprojects/itineRis/results/")
-```
-
-Gives:
-
-
-<center>
-  
-<img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_3d.png" width='500px'>
-https://zoometh.github.io/itineRis/results/isotop_3d
-  
-</center>
-
 # Interactive map of mines
 
 Create an interactive leaflet map of mines
