@@ -137,12 +137,12 @@ map_leaflet(d = d,
 
 Gives:
   
-<center>
+<p align="center">
   
-<img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/map_sites.png" width='500px'>
-https://zoometh.github.io/itineRis/results/map_sites.html
-  
-</center>
+<img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/map_sites.png" width='700px'>
+  <br>
+    https://zoometh.github.io/itineRis/results/map_sites.html
+</p>
 
 ## Thesaurus
 
@@ -156,17 +156,13 @@ thesaurus(root = "artefact",
           outDir = "C:/Rprojects/itineRis/results/")
 ```
 
-<center>
+<p align="center">
   
-<img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/thesaurus-collapse.png" width='500px'>
-https://zoometh.github.io/itineRis/results/artefact
-  
-</center>
+<img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/thesaurus-collapse.png" width='700px'>
+  <br>
+    https://zoometh.github.io/itineRis/results/artefact
+</p>
 
-
-
-
----
 
 [^1]: the Kmeans (R function `kmeans()`) is run on the selected `objects` and `mines`. It tags every sample with the number of its cluster ()
 
