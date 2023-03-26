@@ -67,7 +67,7 @@ Create a ternary plot
 isotop_ternaryplot(df.isotop)
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_ternaryplot.png" width='500px'>
+  <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_ternaryplot-flat.png" width='500px'>
   <br>
   <em>landing page of the interactive Plotly plot</em>
 </p>
