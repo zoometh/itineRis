@@ -1,6 +1,6 @@
 Package: itineRis
 Title: R package for the ANR Itineris
-Version: 0.0.0.999
+Version: 0.1.0
 Authors@R: c(person("Thomas","Huet", role = c("aut","cre"), email = c("thomashuet7@gmail.com"), comment=c(ORCID="0000-0002-1112-6122")), 
              person("Veronica","Cicolani", role = c("aut"), email = c("cicojunior@gmail.com"), comment=c(ORCID="0000-0003-0326-299X")), 
              person("Gilberto","Artioli", role = c("aut"), email = c("gilberto.artioli@unipd.it")))
