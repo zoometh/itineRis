@@ -19,7 +19,6 @@
 #' @examples
 #'
 #' ## export the subgraph of 'artefact' in a collapsibleTree layout
-#' thes <- "https://raw.githubusercontent.com/ANR-Itineris/itineris/main/lod/thesaurus/Itineris_th101.rdf"
 #' thesaurus(root = "artefact",
 #'           outPlot = "collapsibleTree",
 #'           export.plot = T,
@@ -27,7 +26,7 @@
 #'
 #'
 #' @export
-thesaurus <- function(inDir = system.file("extdata", package = 'itineRis'),
+thesaurus <- function(inDir = "https://raw.githubusercontent.com/ANR-Itineris/itineris/main/lod/thesaurus",
                       inFile = "Itineris_th101.rdf",
                       mod = "read",
                       root = "artefact",
