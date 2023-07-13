@@ -1,6 +1,6 @@
 # ***itineRis*** <img src="results/logo.png" width='100px' align="right"/>
 
-R package of the [ANR-Itineris](https://github.com/ANR-Itineris/itineris#anr-itineris-)<img src='https://raw.githubusercontent.com/anr-itineris/itineris/main/www/logo.png' style='height: 50px;vertical-align: middle;'>
+R package developed for statistical analysis isotops developped in the frame of the [ANR-Itineris](https://github.com/ANR-Itineris/itineris#anr-itineris-)<img src='https://raw.githubusercontent.com/anr-itineris/itineris/main/www/logo.png' style='height: 50px;vertical-align: middle;'>
 
 # Install and load package
 
@@ -10,7 +10,7 @@ Install the R package
 devtools::install_github("zoometh/itineRis")
 ```
 
-And load the package
+And load it
 
 ```
 library(itineRis)
