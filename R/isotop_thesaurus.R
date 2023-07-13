@@ -26,7 +26,8 @@
 #'
 #'
 #' @export
-thesaurus <- function(inDir = "https://raw.githubusercontent.com/ANR-Itineris/itineris/main/lod/thesaurus",
+thesaurus <- function(path.thes = "https://raw.githubusercontent.com/zoometh/itineRis/main/inst/extdata/isotops_thesaurus.csv",
+                      inDir = "https://raw.githubusercontent.com/ANR-Itineris/itineris/main/lod/thesaurus",
                       inFile = "Itineris_th101.rdf",
                       mod = "read",
                       root = "artefact",
