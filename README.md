@@ -28,7 +28,7 @@ isotop_ca(col.group = "Provenienza",
           lbl.size = 3)
 ```
 
-The user can select 3 or more variables that appears both in the dataset and in the [reference thesaurus](https://github.com/zoometh/itineRis/blob/main/inst/extdata/isotops_thesaurus.csv). The latter gathers lists of elements (Cu, Ar, ...), chemical compound (SiO2, TiO2, ...), or isotopes.
+The user can select 3 or more variables that appears both in the dataset and in the [reference thesaurus](https://github.com/zoometh/itineRis/blob/main/inst/extdata/isotops_thesaurus.csv). The latter gathers lists of elements (Cu, Ar, ...), chemical compounds (SiO2, TiO2, ...), or isotopes.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_ca-select-var.png" width='700px'>
