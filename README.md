@@ -18,6 +18,33 @@ library(itineRis)
 
 By default, output will be saved in the `results/` folder. You can change the output folder by changing the `dirOut` option in the various functions.
 
+# Correspondence Analysis
+
+Run the [isotop_ca()](https://zoometh.github.io/itineRis/doc/isotop_ca) function to compute Correspondence Analysis (CA)
+
+```
+isotop_ca(col.group = "Provenienza",
+          pt_siz = 2,
+          lbl.size = 3)
+```
+
+The user can select 3 or more variables that appears both in the dataset and in the [reference thesaurus](https://github.com/zoometh/itineRis/blob/main/inst/extdata/isotops_thesaurus.csv).
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/sotop_ca-select-var.png" width='700px'>
+  <br>
+  <em>Selection of variables</em>
+</p>
+
+The result will is: 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/sotop_ca-select-var-results.png" width='700px'>
+  <br>
+  <em>landing page of the interactive Plotly plot</em>
+</p>
+
+
 
 # interactive ternary plot of LIA
 > Create an interactive ternary plot, with plotly, to visualise the results of lead isotopic analysis (LIA)
