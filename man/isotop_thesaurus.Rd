@@ -2,7 +2,7 @@
 % Please edit documentation in R/isotop_thesaurus.R
 \name{isotop_thesaurus}
 \alias{isotop_thesaurus}
-\title{Read the thesaurus of isotops}
+\title{Read the thesaurus of authoritative labels for chemistry variables}
 \usage{
 isotop_thesaurus(
  
@@ -22,7 +22,7 @@ isotop_thesaurus(
 A vector of values
 }
 \description{
-Read the thesaurus of isotopes. Add values and column names into a list that can be compared to input dataset.
+Read the thesaurus of isotopes, elements, ... Add values and column names into a list that can be compared to input dataset.
 }
 \examples{
 

@@ -1,5 +1,6 @@
 ---
-title: "R: Correspondance Analysis on isotop data"
+title: "R: Correspondance Analysis on isotopes, chemical components,
+  or\\..."
 viewport: width=device-width, initial-scale=1.0, user-scalable=yes
 ---
 
@@ -8,12 +9,12 @@ viewport: width=device-width, initial-scale=1.0, user-scalable=yes
   isotop_ca     R Documentation
   ----------- -----------------
 
-## Correspondance Analysis on isotop data
+## Correspondance Analysis on isotopes, chemical components, or elements.
 
 ### Description
 
-Correspondance Analysis on isotop data. Inspired by the \'zoo_ca()\'
-function of zoowork
+Correspondance Analysis on isotopes, chemical components, or elements
+data. Inspired by the \'zoo_ca()\' function of the R package \'zoowork\'
 
 ### Usage
 
@@ -41,7 +42,7 @@ function of zoowork
 
   ------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------
   `df.iso`                              a dataframe with isotop results
-  `iso.preselect`                       a preselection of the isotops that will be analysed, in a vector form, ex: \'c(1, 2, 3, 4, 5)\'. If provided, will skip the user prompt. Default NA.
+  `iso.preselect`                       a preselection of the variables that will be analysed, in a vector form, ex: \'c(1, 2, 3, 4, 5)\'. If provided, will skip the user prompt. Default NA.
   `num_column`                          the column name of assemblage numbers
   `col.group`                           the column name of the sample group (a site, a culture, etc.). Default: NA. Will only affect the symbol color by overwriting the \'color.def.ind\' variable.
   `pt_siz`                              the size of the symbols

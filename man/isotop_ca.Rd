@@ -2,7 +2,7 @@
 % Please edit documentation in R/isotop_ca.R
 \name{isotop_ca}
 \alias{isotop_ca}
-\title{Correspondance Analysis on isotop data}
+\title{Correspondance Analysis on isotopes, chemical components, or elements.}
 \usage{
 isotop_ca(
  
@@ -27,7 +27,7 @@ isotop_ca(
 \arguments{
 \item{df.iso}{a dataframe with isotop results}
 
-\item{iso.preselect}{a preselection of the isotops that will be analysed, in a vector form, ex: `c(1, 2, 3, 4, 5)`. If provided, will skip the user prompt. Default NA.}
+\item{iso.preselect}{a preselection of the variables that will be analysed, in a vector form, ex: `c(1, 2, 3, 4, 5)`. If provided, will skip the user prompt. Default NA.}
 
 \item{num_column}{the column name of assemblage numbers}
 
@@ -51,7 +51,7 @@ isotop_ca(
 a gglot with the different CA by period
 }
 \description{
-Correspondance Analysis on isotop data. Inspired by the `zoo_ca()` function of zoowork
+Correspondance Analysis on isotopes, chemical components, or elements data. Inspired by the `zoo_ca()` function of the R package `zoowork`
 }
 \examples{
 

@@ -1,8 +1,8 @@
-#' Read the thesaurus of isotops
+#' Read the thesaurus of authoritative labels for chemistry variables
 #'
 #' @name isotop_thesaurus
 #'
-#' @description Read the thesaurus of isotopes. Add values and column names into a list that can be compared to input dataset.
+#' @description Read the thesaurus of isotopes, elements, ... Add values and column names into a list that can be compared to input dataset.
 #'
 #' @param path.thes the path to the thesaurus file.
 #' @param as.list if TRUE (Default: FALSE) return all values, and colnames, as a vector. If FALSE, return the thesaurus as a dataframe.

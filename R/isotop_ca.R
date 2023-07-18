@@ -1,12 +1,12 @@
-#' Correspondance Analysis on isotop data
+#' Correspondance Analysis on isotopes, chemical components, or elements.
 #'
 #' @name isotop_ca
 #'
-#' @description Correspondance Analysis on isotop data. Inspired by the `zoo_ca()` function of zoowork
+#' @description Correspondance Analysis on isotopes, chemical components, or elements data. Inspired by the `zoo_ca()` function of the R package `zoowork`
 #'
 #' @param df.iso a dataframe with isotop results
 #' @param col.group the column name of the sample group (a site, a culture, etc.). Default: NA. Will only affect the symbol color by overwriting the `color.def.ind` variable.
-#' @param iso.preselect a preselection of the isotops that will be analysed, in a vector form, ex: `c(1, 2, 3, 4, 5)`. If provided, will skip the user prompt. Default NA.
+#' @param iso.preselect a preselection of the variables that will be analysed, in a vector form, ex: `c(1, 2, 3, 4, 5)`. If provided, will skip the user prompt. Default NA.
 #' @param num_column the column name of assemblage numbers
 #' @param pt_siz the size of the symbols
 #' @param print.caption if TRUE will print information in the console (group colors, etc.)
@@ -67,7 +67,7 @@ isotop_ca <- function(df.iso = "https://raw.githubusercontent.com/zoometh/itineR
     indexes <- 1:length(measured.isotops)
     isotop_list <- paste0(indexes, ": ", measured.isotops)
     msg.a <- paste0("a) Select 3 to ", length(measured.isotops)-1,
-                    " isotops separated by commas (ex: 1,3,5,6) to select individualy,",
+                    " variables separated by commas (ex: 1,3,5,6) to select individualy,",
                     " or by colons (1:10) to select a range (DO NOT MIX THE TWO OPTIONS")
     msg.b <- paste0("b) type 'A' to select all:")
     message_isotop_list <- paste0(msg.a, msg.b)

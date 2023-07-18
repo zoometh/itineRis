@@ -1,5 +1,5 @@
 ---
-title: "R: Read the thesaurus of isotops"
+title: "R: Read the thesaurus of authoritative labels for chemistry\\..."
 viewport: width=device-width, initial-scale=1.0, user-scalable=yes
 ---
 
@@ -8,12 +8,12 @@ viewport: width=device-width, initial-scale=1.0, user-scalable=yes
   isotop_thesaurus     R Documentation
   ------------------ -----------------
 
-## Read the thesaurus of isotops
+## Read the thesaurus of authoritative labels for chemistry variables
 
 ### Description
 
-Read the thesaurus of isotopes. Add values and column names into a list
-that can be compared to input dataset.
+Read the thesaurus of isotopes, elements, \... Add values and column
+names into a list that can be compared to input dataset.
 
 ### Usage
 
