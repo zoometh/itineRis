@@ -41,7 +41,7 @@ The result will is:
 <p align="center">
   <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_ca-select-var-results.png" width='700px'>
   <br>
-  <em>landing page of the interactive Plotly plot</em>
+  <em>CA on elements</em>
 </p>
 
 
