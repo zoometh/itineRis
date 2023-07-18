@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Read the dataset of mines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for read_coords"><tr><td>read_coords</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Read the dataset of mines</h2>
+
+<h3>Description</h3>
+
+<p>Read the dataset of mines. Will store every spreadsheet under its name within the hash object (e.g. &quot;France&quot;)
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+read_coords(
+  d = NA,
+  df.path = paste0(system.file(package = "itineRis"),
+    "/extdata/Coordinates-mines_Thomas Huet.xlsx"),
+  df.sheetnames = c("all"),
+  extract.mines = TRUE,
+  pattern.mines.name = "locality",
+  pattern.mines.coords = c("longitude", "latitude")
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>d</code></td>
+<td>
+<p>a hash dictionnary-like object to store the data</p>
+</td></tr>
+<tr valign="top"><td><code>df.path</code></td>
+<td>
+<p>the path and name of the dataset. An XLSX file.</p>
+</td></tr>
+<tr valign="top"><td><code>df.sheetnames</code></td>
+<td>
+<p>the name or index of the spreadsheet(s) to be read. By default &quot;all&quot; will read all the spreadsheets</p>
+</td></tr>
+<tr valign="top"><td><code>extract.mines</code></td>
+<td>
+<p>if TRUE, will extract the coordinates of one to many spreadsheets and store them under the &quot;mines.coords&quot; key</p>
+</td></tr>
+<tr valign="top"><td><code>pattern.mines.coords</code></td>
+<td>
+<p>if 'extract.mines' is TRUE, will search (regex) for these patterns. A vector of two strings: first longitude/X, second: Y/latitude. By default 'c(&quot;longitude&quot;, &quot;latitude&quot;)'</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A hash
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+d &lt;- hash::hash()
+d &lt;- read_coords(d = d,
+                df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx")
+
+</pre>
+
+
+</div></body></html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a simple dataframe with colors depending on a field</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for isotop_dataframe"><tr><td>isotop_dataframe</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create a simple dataframe with colors depending on a field</h2>
+
+<h3>Description</h3>
+
+<p>Creates a new colum for the color based on another column. For example 'color.objects'
+means the colors are based on the 'object' field (selected by default)
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+isotop_dataframe(
+  df = NA,
+  df.path = paste0(system.file(package = "itineRis"), "/extdata/isotop_results.tsv"),
+  color.column = "object",
+  verbose = TRUE
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df</code></td>
+<td>
+<p>a dataframe. By defaut NA, so it will read a file using 'df.path'</p>
+</td></tr>
+<tr valign="top"><td><code>df.path</code></td>
+<td>
+<p>if &lsquo;df' is NA, will use this path and name to read the dataset from a file. Either a TSV or a CSV with &rsquo;;' separators.</p>
+</td></tr>
+<tr valign="top"><td><code>color.column</code></td>
+<td>
+<p>the name on which the different colors will be setup. By default, the colors
+are those of the objects</p>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+<p>if TRUE, print messages</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a dataframe with an hexadecimal value for the colors
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+df.isotop &lt;- isotop_dataframe()
+
+</pre>
+
+
+</div></body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Correspondance Analysis on isotop data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for isotop_ca"><tr><td>isotop_ca</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Correspondance Analysis on isotop data</h2>
+
+<h3>Description</h3>
+
+<p>Correspondance Analysis on isotop data. Inspired by the 'zoo_ca()' function of zoowork
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+isotop_ca(
+ 
+    df.iso = "https://raw.githubusercontent.com/zoometh/itineRis/main/inst/extdata/example_1.csv",
+  iso.preselect = NA,
+  num_column = "num",
+  col.group = NA,
+  color.def.ind = "blue",
+  color.def.var = "black",
+  pt_siz = 1.5,
+  lbl.size = 2,
+  print.caption = TRUE,
+  export.plot = FALSE,
+  dirOut = paste0(system.file(package = "itineRis"), "/results/"),
+  ca.name = "ca.png",
+  plot.width = 22.2,
+  plot.height = 19.5,
+  plot.dpi = 300,
+  verbose = TRUE
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df.iso</code></td>
+<td>
+<p>a dataframe with isotop results</p>
+</td></tr>
+<tr valign="top"><td><code>iso.preselect</code></td>
+<td>
+<p>a preselection of the isotops that will be analysed, in a vector form, ex: 'c(1, 2, 3, 4, 5)'. If provided, will skip the user prompt. Default NA.</p>
+</td></tr>
+<tr valign="top"><td><code>num_column</code></td>
+<td>
+<p>the column name of assemblage numbers</p>
+</td></tr>
+<tr valign="top"><td><code>col.group</code></td>
+<td>
+<p>the column name of the sample group (a site, a culture, etc.). Default: NA. Will only affect the symbol color by overwriting the 'color.def.ind' variable.</p>
+</td></tr>
+<tr valign="top"><td><code>pt_siz</code></td>
+<td>
+<p>the size of the symbols</p>
+</td></tr>
+<tr valign="top"><td><code>print.caption</code></td>
+<td>
+<p>if TRUE will print information in the console (group colors, etc.)</p>
+</td></tr>
+<tr valign="top"><td><code>export.plot</code></td>
+<td>
+<p>if TRUE (Default: FALSE), save the plot. If not, will plot it</p>
+</td></tr>
+<tr valign="top"><td><code>dirOut</code></td>
+<td>
+<p>the output directory</p>
+</td></tr>
+<tr valign="top"><td><code>ca.name</code></td>
+<td>
+<p>the name of the output plot if saved</p>
+</td></tr>
+<tr valign="top"><td><code>plot.width, plot.height, plot.dpi</code></td>
+<td>
+<p>the dimensions and resolution of the plot if saved</p>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+<p>if TRUE (default): verbose</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a gglot with the different CA by period
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# Plot, with colors on groups, Itineris ANR data
+isotop_ca(col.group = "Provenienza",
+          pt_siz = 2,
+          lbl.size = 3)
+
+# Run on preselected isotops (1 to 5) only, Shadreck Chirikure data
+isotop_ca(df.iso = "C:/Users/Thomas Huet/Desktop/Shadreck data/XRF_Majors.csv",
+          iso.preselect = c(1, 2, 3, 4, 5))
+
+# Export
+isotop_ca(export.plot = T,
+          dirOut = "C:/Users/Thomas Huet/Desktop/Shadreck data/")
+
+</pre>
+
+
+</div></body></html>

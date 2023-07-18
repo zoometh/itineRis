@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create an HTML interactive table with the values of 3...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for isotop_datatable"><tr><td>isotop_datatable</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create an HTML interactive table  with the values of 3 different isotops</h2>
+
+<h3>Description</h3>
+
+<p>get a simple dataframe and create an interactive datatable.
+This function will reuse the same colors as 'isotop_dataframe()' so it has
+to be run after this function
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+isotop_datatable(
+  df = NA,
+  color.column = "object",
+  out.plot = "isotop_datatable.html",
+  dirOut = paste0(system.file(package = "itineRis"), "/results/")
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df</code></td>
+<td>
+<p>the dataframe. The color is displayed on the 'object' field</p>
+</td></tr>
+<tr valign="top"><td><code>color.column</code></td>
+<td>
+<p>the name on which the different colors will be setup. By default,
+the 'object' column</p>
+</td></tr>
+<tr valign="top"><td><code>out.plot</code></td>
+<td>
+<p>the path and name of the created intearctive data table</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>an DT table with a confirmation message
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# color by default, on 'object' column
+df.isotop &lt;- isotop_dataframe()
+isotop_datatable(df.isotop)
+
+# color on 'site' column
+df.isotop &lt;- isotop_dataframe(color.column = 'site')
+isotop_datatable(df.isotop, color.column = 'site')
+
+</pre>
+
+
+</div></body></html>

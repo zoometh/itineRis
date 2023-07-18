@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create an HTML interactive chart with the values of 3...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for isotop_3d"><tr><td>isotop_3d</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create an HTML interactive chart with the values of 3 different isotops</h2>
+
+<h3>Description</h3>
+
+<p>get a dataframe and create a 3D plot
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+isotop_3d(
+  df = NA,
+  vars = c("var1", "var2", "var3"),
+  marker.size = 5,
+  symbols = "circle",
+  color = NA,
+  colors = NA,
+  background.color = "black",
+  title.plot = "LIA measurements",
+  export.plot = FALSE,
+  out.plot = "isotop_3d.html",
+  dirOut = paste0(system.file(package = "itineRis"), "/results/")
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df</code></td>
+<td>
+<p>the dataframe. The color is displayed on the 'object' field</p>
+</td></tr>
+<tr valign="top"><td><code>vars</code></td>
+<td>
+<p>the names of the columns where the isotops measurments are</p>
+</td></tr>
+<tr valign="top"><td><code>background.color</code></td>
+<td>
+<p>color of the plotly background, 'black' or 'white',
+by default 'black'</p>
+</td></tr>
+<tr valign="top"><td><code>title.plot</code></td>
+<td>
+<p>the title of the plot</p>
+</td></tr>
+<tr valign="top"><td><code>export.plot</code></td>
+<td>
+<p>if TRUE, export the plot</p>
+</td></tr>
+<tr valign="top"><td><code>out.plot</code></td>
+<td>
+<p>the name of the output 3D plot</p>
+</td></tr>
+<tr valign="top"><td><code>dirOut</code></td>
+<td>
+<p>path of the output directory</p>
+</td></tr>
+<tr valign="top"><td><code>color.column</code></td>
+<td>
+<p>conventionaly it is 'color', dot, and the name of the field
+used to get the colors. By default 'object' ('color.object')</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a plotly HML 3D plot
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+df.isotop &lt;- isotop_dataframe()
+isotop_3d(df.isotop)
+
+
+</pre>
+
+
+</div></body></html>

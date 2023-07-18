@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Read the thesaurus of isotops</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for isotop_thesaurus"><tr><td>isotop_thesaurus</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Read the thesaurus of isotops</h2>
+
+<h3>Description</h3>
+
+<p>Read the thesaurus of isotopes. Add values and column names into a list that can be compared to input dataset.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+isotop_thesaurus(
+ 
+    path.thes = "https://raw.githubusercontent.com/zoometh/itineRis/main/inst/extdata/isotops_thesaurus.csv",
+  as.list = FALSE,
+  verbose = TRUE
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>path.thes</code></td>
+<td>
+<p>the path to the thesaurus file.</p>
+</td></tr>
+<tr valign="top"><td><code>as.list</code></td>
+<td>
+<p>if TRUE (Default: FALSE) return all values, and colnames, as a vector. If FALSE, return the thesaurus as a dataframe.</p>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+<p>if TRUE, print messages</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A vector of values
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# Return the thesaurus as a vector of values
+thes &lt;- isotop_thesaurus(as.list = T)
+
+</pre>
+
+
+</div></body></html>

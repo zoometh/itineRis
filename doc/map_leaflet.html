@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create an HTML interactive map for the site distribution</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for map_leaflet"><tr><td>map_leaflet</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create an HTML interactive map for the site distribution</h2>
+
+<h3>Usage</h3>
+
+<pre>
+map_leaflet(
+  d = NA,
+  d.coords = NA,
+  df.path = NA,
+  site_column = "site",
+  x_column = "x",
+  y_column = "y",
+  color.point = "red",
+  radius.point = 5,
+  export.plot = F,
+  out.plot = "map_sites.html",
+  dirOut = paste0(system.file(package = "itineRis"), "/results/")
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>d</code></td>
+<td>
+<p>a hash dictionnary-like object to store the data. By default NA</p>
+</td></tr>
+<tr valign="top"><td><code>df.path</code></td>
+<td>
+<p>the path to the dataframe. This dataframe must have at least three columns: one for the site name (by defaut 'site'), two for the coordinates (by default, 'x' and 'y'). By default NA, then will read the 'd' variable</p>
+</td></tr>
+<tr valign="top"><td><code>export.plot</code></td>
+<td>
+<p>if TRUE, export the map</p>
+</td></tr>
+<tr valign="top"><td><code>out.plot</code></td>
+<td>
+<p>the name of the output map</p>
+</td></tr>
+<tr valign="top"><td><code>dirOut</code></td>
+<td>
+<p>path of the output directory</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a leaflet interactive map
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+d &lt;- hash::hash()
+d &lt;- read_mines(d = d,
+                df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx")
+map_leaflet(d = d, d.coords = "mines.coords", export.plot = T)
+
+
+map_leaflet(df.path = paste0(system.file(package = "itineRis"), "/extdata/sites_coords.tsv"),
+            color.point = "blue")
+
+</pre>
+
+
+</div></body></html>

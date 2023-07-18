@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Read the Itineris thesaurus</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for thesaurus"><tr><td>thesaurus</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Read the Itineris thesaurus</h2>
+
+<h3>Description</h3>
+
+<p>Read the multi-linguism thesaurus hosted by https://thesaurus.mom.fr/opentheso/?idt=th101 and replot it as an interactive graph.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+thesaurus(
+  inDir = "https://raw.githubusercontent.com/ANR-Itineris/itineris/main/lod/thesaurus",
+  inFile = "Itineris_th101.rdf",
+  mod = "read",
+  root = "artefact",
+  prefix = "https://thesaurus.mom.fr:443/opentheso/?idc=",
+  suffix = "&amp;idt=th101",
+  outPlot = "collapsibleTree",
+  export.plot = FALSE,
+  outFile = NA,
+  outDir = system.file(package = "itineRis"),
+  verbose = FALSE
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>mod</code></td>
+<td>
+<p>the way the thesaurus in handled. Default, &quot;read&quot;.</p>
+</td></tr>
+<tr valign="top"><td><code>root</code></td>
+<td>
+<p>the node under which the subgraph will be filtered</p>
+</td></tr>
+<tr valign="top"><td><code>prefix, suffix</code></td>
+<td>
+<p>the prefix and suffix to remove.</p>
+</td></tr>
+<tr valign="top"><td><code>outPlot</code></td>
+<td>
+<p>the type of interactive plot.</p>
+</td></tr>
+<tr valign="top"><td><code>export.plot</code></td>
+<td>
+<p>if TRUE will export into outDir.</p>
+</td></tr>
+<tr valign="top"><td><code>outDir</code></td>
+<td>
+<p>the output directory.</p>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+<p>if TRUE, print messages</p>
+</td></tr>
+<tr valign="top"><td><code>path.thes</code></td>
+<td>
+<p>the path to the thesaurus file.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>an interactive plot
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## export the subgraph of 'artefact' in a collapsibleTree layout
+thesaurus(root = "artefact",
+          outPlot = "collapsibleTree",
+          export.plot = T,
+          outDir = "C:/Rprojects/itineRis/results/")
+
+
+</pre>
+
+
+</div></body></html>

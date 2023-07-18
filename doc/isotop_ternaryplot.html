@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create an interactive ternary plot from a dataset</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for isotop_ternaryplot"><tr><td>isotop_ternaryplot</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create an interactive ternary plot from a dataset</h2>
+
+<h3>Description</h3>
+
+<p>Create an interactive ternary plot from a dataset, whether fully interactive (R Shiny + Plotly) or partly interactive (Plotly)
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+isotop_ternaryplot(
+  df = NA,
+  run.shiny = TRUE,
+  export.plot = FALSE,
+  outDir = paste0(system.file(package = "itineRis"), "/results"),
+  outFile = "tern_lia",
+  verbose = TRUE
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df</code></td>
+<td>
+<p>a dataframe with isotop values.</p>
+</td></tr>
+<tr valign="top"><td><code>export.plot</code></td>
+<td>
+<p>if TRUE will export.</p>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+<p>if TRUE, print messages.</p>
+</td></tr>
+<tr valign="top"><td><code>shiny</code></td>
+<td>
+<p>if TRUE (Default), interactive (Shiny)</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a Plotly interactive ternary plot
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# Not interactive, with LIA isotops
+d &lt;- hash::hash()
+
+d &lt;- read_lia(d = d,
+              d.tag = "lia.objects",
+              df.path = "C:/Rprojects/itineRis/results/LIA data objects.xlsx",
+              header.line = 2)
+d &lt;- read_lia(d = d,
+              d.tag = "lia.mines",
+              pattern.objects.num = "Locality/.Mine",
+              pattern.objects.Pb206_Pb204 = "206Pb/204Pb",
+              pattern.objects.Pb207_Pb204 = "207Pb/204Pb",
+              pattern.objects.Pb208_Pb204 = "208Pb/204Pb",
+              df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx",
+              header.line = 1)
+
+library(dplyr)
+
+mydf &lt;- rbind(d$lia.mines, d$lia.objects)
+df.isotop &lt;- isotop_dataframe(df = mydf, df.path = NA)
+df.isotop[df.isotop$object == "golasecca", "color.object"] &lt;- "#0000FF"
+df.isotop[df.isotop$object == "hochdorf", "color.object"] &lt;- "#00FFFF"
+df.isotop[df.isotop$object == "France", "color.object"] &lt;- "#FF0000"
+df.isotop[df.isotop$object == "France", "symbol"] &lt;- "triangle"
+df.isotop[df.isotop$object == "Iberian Peninsula", "color.object"] &lt;- "#FFA500"
+df.isotop[df.isotop$object == "Iberian Peninsula", "symbol"] &lt;- "triangle"
+df.isotop[df.isotop$object == "Switzerland", "color.object"] &lt;- "#964B00"
+df.isotop[df.isotop$object == "Switzerland", "symbol"] &lt;- "triangle"
+
+## Plot
+isotop_ternaryplot(df.isotop)
+
+## Export
+isotop_ternaryplot(df.isotop, export.plot = T,
+                   outDir = "C:/Rprojects/itineRis/results/", outFile = "lia_tern_2")
+
+## Interactive
+isotop_ternaryplot(run.shiny = T)
+
+## Not interactive
+isotop_ternaryplot(run.shiny = F)
+
+</pre>
+
+
+</div></body></html>
