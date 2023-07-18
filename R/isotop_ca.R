@@ -4,10 +4,12 @@
 #'
 #' @description Correspondance Analysis on isotop data. Inspired by the `zoo_ca()` function of zoowork
 #'
-#' @param df.iso a dataframe
+#' @param df.iso a dataframe with isotop results
+#' @param col.group the column name of the sample group (a site, a culture, etc.). Default: NA. Will only affect the symbol color by overwriting the `color.def.ind` variable.
 #' @param iso.preselect a preselection of the isotops that will be analysed, in a vector form, ex: `c(1, 2, 3, 4, 5)`. If provided, will skip the user prompt. Default NA.
 #' @param num_column the column name of assemblage numbers
 #' @param pt_siz the size of the symbols
+#' @param print.caption if TRUE will print information in the console (group colors, etc.)
 #' @param export.plot if TRUE (Default: FALSE), save the plot. If not, will plot it
 #' @param dirOut the output directory
 #' @param ca.name the name of the output plot if saved
@@ -18,18 +20,27 @@
 #'
 #' @examples
 #'
-#' # Run on preselected isotops (1 to 5) only
-#' isotop_ca(iso.preselect = c(1, 2, 3, 4, 5))
+#' # Plot, Itineris ANR data
+#' isotop_ca()
+#'
+#' # Run on preselected isotops (1 to 5) only, Shadreck Chirikure data
+#' isotop_ca(df.iso = "C:/Users/Thomas Huet/Desktop/Shadreck data/XRF_Majors.csv",
+#'           iso.preselect = c(1, 2, 3, 4, 5))
 #'
 #' # Export
 #' isotop_ca(export.plot = T,
 #'           dirOut = "C:/Users/Thomas Huet/Desktop/Shadreck data/")
 #'
 #' @export
-isotop_ca <- function(df.iso = "C:/Users/Thomas Huet/Desktop/Shadreck data/XRF_Majors.csv",
+isotop_ca <- function(df.iso = "https://raw.githubusercontent.com/zoometh/itineRis/main/inst/extdata/example_1.csv",
                       iso.preselect = NA,
                       num_column = "num",
+                      col.group = NA,
+                      color.def.ind = "blue",
+                      color.def.var = "black",
                       pt_siz = 1.5,
+                      lbl.size = 2,
+                      print.caption = TRUE,
                       export.plot = FALSE,
                       dirOut = paste0(system.file(package = "itineRis"), "/results/"),
                       ca.name = "ca.png",
@@ -38,48 +49,71 @@ isotop_ca <- function(df.iso = "C:/Users/Thomas Huet/Desktop/Shadreck data/XRF_M
                       plot.dpi = 300,
                       verbose = TRUE){
   `%>%` <- dplyr::`%>%` # used to not load dplyr
+  # try ';' and then ','
   dfisotops <- read.csv2(df.iso, sep = ";", row.names = 1)
+  if(ncol(dfisotops) == 0){
+    dfisotops <- read.csv2(df.iso, sep = ",", row.names = 1)
+  }
+  # rm column with NA (?)
   dfisotops <- dfisotops %>%
     dplyr::select_if(~ !any(is.na(.)))
   # intersect the colnames from the df and the thesaurus to find the correct columns if df
   thes <- isotop_thesaurus(as.list = T)
   measured.isotops <- intersect(colnames(dfisotops), thes)
   if(is.na(iso.preselect)){
-  # user's choice
-  indexes <- 1:length(measured.isotops)
-  isotop_list <- paste0(indexes, ": ", measured.isotops)
-  msg.a <- paste0("a) Select 3 to ", length(measured.isotops)-1, " isotops separated by commas (ex: 1,3,5,6) to select individualy, or by colons (1:10) to select a range (DO NOT MIX THE TWO OPTIONS")
-  msg.b <- paste0("b) type 'A' to select all:")
-  message_isotop_list <- paste0(msg.a, msg.b)
-  # get user selection
-  selected.iso <- readline(prompt = cat(isotop_list, msg.a, msg.b, sep = "\n"))
+    # user's choice
+    indexes <- 1:length(measured.isotops)
+    isotop_list <- paste0(indexes, ": ", measured.isotops)
+    msg.a <- paste0("a) Select 3 to ", length(measured.isotops)-1,
+                    " isotops separated by commas (ex: 1,3,5,6) to select individualy,",
+                    " or by colons (1:10) to select a range (DO NOT MIX THE TWO OPTIONS")
+    msg.b <- paste0("b) type 'A' to select all:")
+    message_isotop_list <- paste0(msg.a, msg.b)
+    # get user selection
+    selected.iso <- readline(prompt = cat(isotop_list, msg.a, msg.b, sep = "\n"))
+    # ...
 
-  # parse user's selection
-  if(grepl(",", selected.iso)){
-    iso.selection <- as.vector(as.integer(unlist(strsplit(selected.iso, ","))))
-  }
-  if(grepl(":", selected.iso)){
-    iso.selection <- as.integer(eval(parse(text = selected.iso)))
-  }
-  if(tolower(selected.iso) == 'a'){
-    iso.selection <- seq(1, length(measured.isotops))
-  }
-  # selected isotops
-  studied.isotops <- measured.isotops[iso.selection]
+    # parse user's selection
+    if(grepl(",", selected.iso)){
+      iso.selection <- as.vector(as.integer(unlist(strsplit(selected.iso, ","))))
+    }
+    if(grepl(":", selected.iso)){
+      iso.selection <- as.integer(eval(parse(text = selected.iso)))
+    }
+    if(tolower(selected.iso) == 'a'){
+      iso.selection <- seq(1, length(measured.isotops))
+    }
+    # selected isotops
+    studied.isotops <- measured.isotops[iso.selection]
   } else {
     # use the preselection
     studied.isotops <- measured.isotops[iso.preselect]
   }
   # dataset
   xdat <- dfisotops[ , studied.isotops]
+  # convert to numeric
+  xdat[ , studied.isotops] <- sapply(xdat[ , studied.isotops], as.numeric)
   # symbology
+  if(is.na(col.group)){
+    color.ind <- rep(color.def.ind, nrow(xdat))
+  } else {
+    # if individuals are grouped
+    unq.groups <- unique(dfisotops[ , col.group])
+    n.groups <- length(unq.groups)
+    unq.groups.col <- RColorBrewer::brewer.pal(n.groups, "Set1")[1:n.groups]
+    df.grp.colors <- data.frame(grp.name = unq.groups,
+                                colors = unq.groups.col)
+    df.grp.colors <- merge(dfisotops, df.grp.colors,
+                           by.x = col.group, by.y = "grp.name", all.x = T)
+    color.ind <- df.grp.colors$colors
+  }
   var.symb <- data.frame(Row.names = studied.isotops,
                          shape = rep(17, length(studied.isotops)),
-                         color = rep("black", length(studied.isotops))
+                         color = rep(color.def.var, length(studied.isotops))
   )
   ind.symb <- data.frame(Row.names = rownames(xdat),
                          shape = rep(16, nrow(xdat)),
-                         color = rep("blue", nrow(xdat))
+                         color = color.ind
   )
   if(verbose){print("  - run CA")}
   # xdat <- df_lda.per[ , -which(names(df_lda.per) %in% c(typSite_column))]
@@ -124,7 +158,7 @@ isotop_ca <- function(df.iso = "C:/Users/Thomas Huet/Desktop/Shadreck data/XRF_M
                                      pch = shape),
                         size = pt_siz) +
     ggrepel::geom_text_repel(ggplot2::aes(CA1, CA2, label = num),
-                             cex = 2,
+                             cex = lbl.size,
                              segment.size = 0.1,
                              segment.alpha = 0.5,
                              max.overlaps = Inf) +
@@ -178,4 +212,8 @@ isotop_ca <- function(df.iso = "C:/Users/Thomas Huet/Desktop/Shadreck data/XRF_M
   }
 }
 
+isotop_ca(df.iso = "https://raw.githubusercontent.com/zoometh/itineRis/main/inst/extdata/example_1.csv",
+          col.group = "Provenienza",
+          pt_siz = 2,
+          lbl.size = 3)
 

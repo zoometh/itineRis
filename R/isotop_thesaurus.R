@@ -12,7 +12,7 @@
 #'
 #' @examples
 #'
-#' # Return the thesaurus as a vector
+#' # Return the thesaurus as a vector of values
 #' thes <- isotop_thesaurus(as.list = T)
 #'
 #' @export
