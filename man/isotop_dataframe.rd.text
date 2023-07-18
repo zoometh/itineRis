@@ -1,0 +1,45 @@
+---
+title: "R: Create a simple dataframe with colors depending on a field"
+viewport: width=device-width, initial-scale=1.0, user-scalable=yes
+---
+
+::: container
+  ------------------ -----------------
+  isotop_dataframe     R Documentation
+  ------------------ -----------------
+
+## Create a simple dataframe with colors depending on a field
+
+### Description
+
+Creates a new colum for the color based on another column. For example
+\'color.objects\' means the colors are based on the \'object\' field
+(selected by default)
+
+### Usage
+
+    isotop_dataframe(
+      df = NA,
+      df.path = paste0(system.file(package = "itineRis"), "/extdata/isotop_results.tsv"),
+      color.column = "object",
+      verbose = TRUE
+    )
+
+### Arguments
+
+  ---------------- --------------------------------------------------------------------------------------------------------------------------
+  `df`             a dataframe. By defaut NA, so it will read a file using \'df.path\'
+  `df.path`        if 'df\' is NA, will use this path and name to read the dataset from a file. Either a TSV or a CSV with ';\' separators.
+  `color.column`   the name on which the different colors will be setup. By default, the colors are those of the objects
+  `verbose`        if TRUE, print messages
+  ---------------- --------------------------------------------------------------------------------------------------------------------------
+
+### Value
+
+a dataframe with an hexadecimal value for the colors
+
+### Examples
+
+
+    df.isotop <- isotop_dataframe()
+:::

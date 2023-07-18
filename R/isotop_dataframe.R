@@ -7,7 +7,7 @@
 #' @param df.path if `df` is NA, will use this path and name to read the dataset from a file. Either a TSV or a CSV with ';' separators.
 #' @param color.column the name on which the different colors will be setup. By default, the colors
 #' are those of the objects
-#' @verbose if TRUE, print messages
+#' @param verbose if TRUE, print messages
 #'
 #' @return a dataframe with an hexadecimal value for the colors
 #'

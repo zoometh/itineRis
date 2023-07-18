@@ -1,0 +1,44 @@
+---
+title: "R: Read the thesaurus of isotops"
+viewport: width=device-width, initial-scale=1.0, user-scalable=yes
+---
+
+::: container
+  ------------------ -----------------
+  isotop_thesaurus     R Documentation
+  ------------------ -----------------
+
+## Read the thesaurus of isotops
+
+### Description
+
+Read the thesaurus of isotopes. Add values and column names into a list
+that can be compared to input dataset.
+
+### Usage
+
+    isotop_thesaurus(
+     
+        path.thes = "https://raw.githubusercontent.com/zoometh/itineRis/main/inst/extdata/isotops_thesaurus.csv",
+      as.list = FALSE,
+      verbose = TRUE
+    )
+
+### Arguments
+
+  ------------- -----------------------------------------------------------------------------------------------------------------------
+  `path.thes`   the path to the thesaurus file.
+  `as.list`     if TRUE (Default: FALSE) return all values, and colnames, as a vector. If FALSE, return the thesaurus as a dataframe.
+  `verbose`     if TRUE, print messages
+  ------------- -----------------------------------------------------------------------------------------------------------------------
+
+### Value
+
+A vector of values
+
+### Examples
+
+
+    # Return the thesaurus as a vector of values
+    thes <- isotop_thesaurus(as.list = T)
+:::

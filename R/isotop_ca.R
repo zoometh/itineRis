@@ -20,8 +20,10 @@
 #'
 #' @examples
 #'
-#' # Plot, Itineris ANR data
-#' isotop_ca()
+#' # Plot, with colors on groups, Itineris ANR data
+#' isotop_ca(col.group = "Provenienza",
+#'           pt_siz = 2,
+#'           lbl.size = 3)
 #'
 #' # Run on preselected isotops (1 to 5) only, Shadreck Chirikure data
 #' isotop_ca(df.iso = "C:/Users/Thomas Huet/Desktop/Shadreck data/XRF_Majors.csv",
@@ -211,9 +213,3 @@ isotop_ca <- function(df.iso = "https://raw.githubusercontent.com/zoometh/itineR
     return(gca)
   }
 }
-
-isotop_ca(df.iso = "https://raw.githubusercontent.com/zoometh/itineRis/main/inst/extdata/example_1.csv",
-          col.group = "Provenienza",
-          pt_siz = 2,
-          lbl.size = 3)
-

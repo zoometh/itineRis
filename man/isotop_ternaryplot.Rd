@@ -2,21 +2,35 @@
 % Please edit documentation in R/isotop_ternaryplot.R
 \name{isotop_ternaryplot}
 \alias{isotop_ternaryplot}
-\title{Create a ternary plot from a dataset}
+\title{Create an interactive ternary plot from a dataset}
 \usage{
-isotop_ternaryplot(df = NA, verbose = FALSE)
+isotop_ternaryplot(
+  df = NA,
+  run.shiny = TRUE,
+  export.plot = FALSE,
+  outDir = paste0(system.file(package = "itineRis"), "/results"),
+  outFile = "tern_lia",
+  verbose = TRUE
+)
 }
 \arguments{
-\item{df}{a dataframe created with the isotop_dataframe() function.}
+\item{df}{a dataframe with isotop values.}
+
+\item{export.plot}{if TRUE will export.}
+
+\item{verbose}{if TRUE, print messages.}
+
+\item{shiny}{if TRUE (Default), interactive (Shiny)}
 }
 \value{
-a dataframe with an hexadecimal value for the colors
+a Plotly interactive ternary plot
 }
 \description{
-
+Create an interactive ternary plot from a dataset, whether fully interactive (R Shiny + Plotly) or partly interactive (Plotly)
 }
 \examples{
 
+# Not interactive, with LIA isotops
 d <- hash::hash()
 
 d <- read_lia(d = d,
@@ -45,6 +59,17 @@ df.isotop[df.isotop$object == "Iberian Peninsula", "symbol"] <- "triangle"
 df.isotop[df.isotop$object == "Switzerland", "color.object"] <- "#964B00"
 df.isotop[df.isotop$object == "Switzerland", "symbol"] <- "triangle"
 
+## Plot
 isotop_ternaryplot(df.isotop)
+
+## Export
+isotop_ternaryplot(df.isotop, export.plot = T,
+                   outDir = "C:/Rprojects/itineRis/results/", outFile = "lia_tern_2")
+
+## Interactive
+isotop_ternaryplot(run.shiny = T)
+
+## Not interactive
+isotop_ternaryplot(run.shiny = F)
 
 }

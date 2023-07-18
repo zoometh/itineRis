@@ -1,0 +1,50 @@
+---
+title: "R: Read the dataset of mines"
+viewport: width=device-width, initial-scale=1.0, user-scalable=yes
+---
+
+::: container
+  ------------- -----------------
+  read_coords     R Documentation
+  ------------- -----------------
+
+## Read the dataset of mines
+
+### Description
+
+Read the dataset of mines. Will store every spreadsheet under its name
+within the hash object (e.g. \"France\")
+
+### Usage
+
+    read_coords(
+      d = NA,
+      df.path = paste0(system.file(package = "itineRis"),
+        "/extdata/Coordinates-mines_Thomas Huet.xlsx"),
+      df.sheetnames = c("all"),
+      extract.mines = TRUE,
+      pattern.mines.name = "locality",
+      pattern.mines.coords = c("longitude", "latitude")
+    )
+
+### Arguments
+
+  ------------------------ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  `d`                      a hash dictionnary-like object to store the data
+  `df.path`                the path and name of the dataset. An XLSX file.
+  `df.sheetnames`          the name or index of the spreadsheet(s) to be read. By default \"all\" will read all the spreadsheets
+  `extract.mines`          if TRUE, will extract the coordinates of one to many spreadsheets and store them under the \"mines.coords\" key
+  `pattern.mines.coords`   if \'extract.mines\' is TRUE, will search (regex) for these patterns. A vector of two strings: first longitude/X, second: Y/latitude. By default \'c(\"longitude\", \"latitude\")\'
+  ------------------------ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Value
+
+A hash
+
+### Examples
+
+
+    d <- hash::hash()
+    d <- read_coords(d = d,
+                    df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx")
+:::

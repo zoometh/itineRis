@@ -1,0 +1,70 @@
+---
+title: "R: Read XLSX dataset of lead isotop analysis (LIA)"
+viewport: width=device-width, initial-scale=1.0, user-scalable=yes
+---
+
+::: container
+  ---------- -----------------
+  read_lia     R Documentation
+  ---------- -----------------
+
+## Read XLSX dataset of lead isotop analysis (LIA)
+
+### Description
+
+Read the dataset of objects. Will store every spreadsheet under its name
+within a hash object (e.g. \"golasecca\")
+
+### Usage
+
+    read_lia(
+      d = NA,
+      d.tag = "lia",
+      df.path = paste0(system.file(package = "itineRis"), "/extdata/LIA data objects.xlsx"),
+      df.sheetnames = c("all"),
+      header.line = 1,
+      pattern.objects.num = "Labornr",
+      pattern.objects.Pb206_Pb204 = "Pb206/Pb204",
+      pattern.objects.Pb207_Pb204 = "Pb207/Pb204",
+      pattern.objects.Pb208_Pb204 = "Pb208/Pb204",
+      export.dataframe = FALSE,
+      out.df = "lia.tsv",
+      dirOut = paste0(system.file(package = "itineRis"), "/results/")
+    )
+
+### Arguments
+
+  ----------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  `d`                                                                                       a hash dictionnary-like object to store the data.
+  `d.tag`                                                                                   the new field in 'd\'. By default, 'lia\'.
+  `df.path`                                                                                 the path and name of the dataset. An XLSX file.
+  `df.sheetnames`                                                                           the name or index of the spreadsheet(s) to be read. By default \"all\" will read all the spreadsheets.
+  `header.line`                                                                             the row of the headers, by default the first line.
+  `pattern.objects.num`                                                                     Search (regex) for this pattern in the column names to find the laboratory number. It is important to remind that R doesn\'t accept spaces in header that must be replcaed by dots.
+  `pattern.objects.Pb206_Pb204, pattern.objects.Pb207_Pb204, pattern.objects.Pb208_Pb204`   Search (regex) for these patterns in the column names to find the LIA measurements.
+  `dirOut`                                                                                  path of the output directory.
+  `export.plot`                                                                             if TRUE, export the dataframe.
+  `out.plot`                                                                                the name of the output dataframe.
+  ----------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Value
+
+A hash with a new entrance. If export is TRUE, will export as TSV
+
+### Examples
+
+
+    d <- hash::hash()
+    d <- read_lia(d = d,
+                  d.tag = "lia.objects",
+                  df.path = "C:/Rprojects/itineRis/results/LIA data objects.xlsx",
+                  header.line = 2)
+    d <- read_lia(d = d,
+                  d.tag = "lia.mines",
+                  pattern.objects.num = "Locality/.Mine",
+                  pattern.objects.Pb206_Pb204 = "206Pb/204Pb",
+                  pattern.objects.Pb207_Pb204 = "207Pb/204Pb",
+                  pattern.objects.Pb208_Pb204 = "208Pb/204Pb",
+                  df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx",
+                  header.line = 1)
+:::

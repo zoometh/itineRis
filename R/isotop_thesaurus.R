@@ -5,8 +5,8 @@
 #' @description Read the thesaurus of isotopes. Add values and column names into a list that can be compared to input dataset.
 #'
 #' @param path.thes the path to the thesaurus file.
-#' @as.list if TRUE (Default: FALSE) return all values, and colnames, as a vector. If FALSE, return the thesaurus as a dataframe.
-#' @verbose if TRUE, print messages
+#' @param as.list if TRUE (Default: FALSE) return all values, and colnames, as a vector. If FALSE, return the thesaurus as a dataframe.
+#' @param verbose if TRUE, print messages
 #'
 #' @return A vector of values
 #'

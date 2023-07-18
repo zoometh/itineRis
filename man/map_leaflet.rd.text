@@ -1,0 +1,54 @@
+---
+title: "R: Create an HTML interactive map for the site distribution"
+viewport: width=device-width, initial-scale=1.0, user-scalable=yes
+---
+
+::: container
+  ------------- -----------------
+  map_leaflet     R Documentation
+  ------------- -----------------
+
+## Create an HTML interactive map for the site distribution
+
+### Usage
+
+    map_leaflet(
+      d = NA,
+      d.coords = NA,
+      df.path = NA,
+      site_column = "site",
+      x_column = "x",
+      y_column = "y",
+      color.point = "red",
+      radius.point = 5,
+      export.plot = F,
+      out.plot = "map_sites.html",
+      dirOut = paste0(system.file(package = "itineRis"), "/results/")
+    )
+
+### Arguments
+
+  --------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  `d`             a hash dictionnary-like object to store the data. By default NA
+  `df.path`       the path to the dataframe. This dataframe must have at least three columns: one for the site name (by defaut \'site\'), two for the coordinates (by default, \'x\' and \'y\'). By default NA, then will read the \'d\' variable
+  `export.plot`   if TRUE, export the map
+  `out.plot`      the name of the output map
+  `dirOut`        path of the output directory
+  --------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Value
+
+a leaflet interactive map
+
+### Examples
+
+
+    d <- hash::hash()
+    d <- read_mines(d = d,
+                    df.path = "C:/Rprojects/itineRis/results/Coordinates-mines_Thomas Huet.xlsx")
+    map_leaflet(d = d, d.coords = "mines.coords", export.plot = T)
+
+
+    map_leaflet(df.path = paste0(system.file(package = "itineRis"), "/extdata/sites_coords.tsv"),
+                color.point = "blue")
+:::

@@ -11,8 +11,7 @@
 #' @param outPlot the type of interactive plot.
 #' @param export.plot if TRUE will export into outDir.
 #' @param outDir the output directory.
-#'
-#' @verbose if TRUE, print messages
+#' @param verbose if TRUE, print messages
 #'
 #' @return an interactive plot
 #'

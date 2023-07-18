@@ -1,0 +1,75 @@
+---
+title: "R: Correspondance Analysis on isotop data"
+viewport: width=device-width, initial-scale=1.0, user-scalable=yes
+---
+
+::: container
+  ----------- -----------------
+  isotop_ca     R Documentation
+  ----------- -----------------
+
+## Correspondance Analysis on isotop data
+
+### Description
+
+Correspondance Analysis on isotop data. Inspired by the \'zoo_ca()\'
+function of zoowork
+
+### Usage
+
+    isotop_ca(
+     
+        df.iso = "https://raw.githubusercontent.com/zoometh/itineRis/main/inst/extdata/example_1.csv",
+      iso.preselect = NA,
+      num_column = "num",
+      col.group = NA,
+      color.def.ind = "blue",
+      color.def.var = "black",
+      pt_siz = 1.5,
+      lbl.size = 2,
+      print.caption = TRUE,
+      export.plot = FALSE,
+      dirOut = paste0(system.file(package = "itineRis"), "/results/"),
+      ca.name = "ca.png",
+      plot.width = 22.2,
+      plot.height = 19.5,
+      plot.dpi = 300,
+      verbose = TRUE
+    )
+
+### Arguments
+
+  ------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------
+  `df.iso`                              a dataframe with isotop results
+  `iso.preselect`                       a preselection of the isotops that will be analysed, in a vector form, ex: \'c(1, 2, 3, 4, 5)\'. If provided, will skip the user prompt. Default NA.
+  `num_column`                          the column name of assemblage numbers
+  `col.group`                           the column name of the sample group (a site, a culture, etc.). Default: NA. Will only affect the symbol color by overwriting the \'color.def.ind\' variable.
+  `pt_siz`                              the size of the symbols
+  `print.caption`                       if TRUE will print information in the console (group colors, etc.)
+  `export.plot`                         if TRUE (Default: FALSE), save the plot. If not, will plot it
+  `dirOut`                              the output directory
+  `ca.name`                             the name of the output plot if saved
+  `plot.width, plot.height, plot.dpi`   the dimensions and resolution of the plot if saved
+  `verbose`                             if TRUE (default): verbose
+  ------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Value
+
+a gglot with the different CA by period
+
+### Examples
+
+
+    # Plot, with colors on groups, Itineris ANR data
+    isotop_ca(col.group = "Provenienza",
+              pt_siz = 2,
+              lbl.size = 3)
+
+    # Run on preselected isotops (1 to 5) only, Shadreck Chirikure data
+    isotop_ca(df.iso = "C:/Users/Thomas Huet/Desktop/Shadreck data/XRF_Majors.csv",
+              iso.preselect = c(1, 2, 3, 4, 5))
+
+    # Export
+    isotop_ca(export.plot = T,
+              dirOut = "C:/Users/Thomas Huet/Desktop/Shadreck data/")
+:::

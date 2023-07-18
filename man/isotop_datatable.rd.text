@@ -1,0 +1,50 @@
+---
+title: "R: Create an HTML interactive table with the values of 3\\..."
+viewport: width=device-width, initial-scale=1.0, user-scalable=yes
+---
+
+::: container
+  ------------------ -----------------
+  isotop_datatable     R Documentation
+  ------------------ -----------------
+
+## Create an HTML interactive table with the values of 3 different isotops
+
+### Description
+
+get a simple dataframe and create an interactive datatable. This
+function will reuse the same colors as \'isotop_dataframe()\' so it has
+to be run after this function
+
+### Usage
+
+    isotop_datatable(
+      df = NA,
+      color.column = "object",
+      out.plot = "isotop_datatable.html",
+      dirOut = paste0(system.file(package = "itineRis"), "/results/")
+    )
+
+### Arguments
+
+  ---------------- -----------------------------------------------------------------------------------------
+  `df`             the dataframe. The color is displayed on the \'object\' field
+  `color.column`   the name on which the different colors will be setup. By default, the \'object\' column
+  `out.plot`       the path and name of the created intearctive data table
+  ---------------- -----------------------------------------------------------------------------------------
+
+### Value
+
+an DT table with a confirmation message
+
+### Examples
+
+
+    # color by default, on 'object' column
+    df.isotop <- isotop_dataframe()
+    isotop_datatable(df.isotop)
+
+    # color on 'site' column
+    df.isotop <- isotop_dataframe(color.column = 'site')
+    isotop_datatable(df.isotop, color.column = 'site')
+:::

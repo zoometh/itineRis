@@ -18,6 +18,8 @@ isotop_dataframe(
 
 \item{color.column}{the name on which the different colors will be setup. By default, the colors
 are those of the objects}
+
+\item{verbose}{if TRUE, print messages}
 }
 \value{
 a dataframe with an hexadecimal value for the colors

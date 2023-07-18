@@ -1,0 +1,55 @@
+---
+title: "R: Create an HTML interactive chart with the values of 3\\..."
+viewport: width=device-width, initial-scale=1.0, user-scalable=yes
+---
+
+::: container
+  ----------- -----------------
+  isotop_3d     R Documentation
+  ----------- -----------------
+
+## Create an HTML interactive chart with the values of 3 different isotops
+
+### Description
+
+get a dataframe and create a 3D plot
+
+### Usage
+
+    isotop_3d(
+      df = NA,
+      vars = c("var1", "var2", "var3"),
+      marker.size = 5,
+      symbols = "circle",
+      color = NA,
+      colors = NA,
+      background.color = "black",
+      title.plot = "LIA measurements",
+      export.plot = FALSE,
+      out.plot = "isotop_3d.html",
+      dirOut = paste0(system.file(package = "itineRis"), "/results/")
+    )
+
+### Arguments
+
+  -------------------- --------------------------------------------------------------------------------------------------------------------------------
+  `df`                 the dataframe. The color is displayed on the \'object\' field
+  `vars`               the names of the columns where the isotops measurments are
+  `background.color`   color of the plotly background, \'black\' or \'white\', by default \'black\'
+  `title.plot`         the title of the plot
+  `export.plot`        if TRUE, export the plot
+  `out.plot`           the name of the output 3D plot
+  `dirOut`             path of the output directory
+  `color.column`       conventionaly it is \'color\', dot, and the name of the field used to get the colors. By default \'object\' (\'color.object\')
+  -------------------- --------------------------------------------------------------------------------------------------------------------------------
+
+### Value
+
+a plotly HML 3D plot
+
+### Examples
+
+
+    df.isotop <- isotop_dataframe()
+    isotop_3d(df.isotop)
+:::

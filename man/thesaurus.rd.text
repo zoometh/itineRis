@@ -1,0 +1,60 @@
+---
+title: "R: Read the Itineris thesaurus"
+viewport: width=device-width, initial-scale=1.0, user-scalable=yes
+---
+
+::: container
+  ----------- -----------------
+  thesaurus     R Documentation
+  ----------- -----------------
+
+## Read the Itineris thesaurus
+
+### Description
+
+Read the multi-linguism thesaurus hosted by
+https://thesaurus.mom.fr/opentheso/?idt=th101 and replot it as an
+interactive graph.
+
+### Usage
+
+    thesaurus(
+      inDir = "https://raw.githubusercontent.com/ANR-Itineris/itineris/main/lod/thesaurus",
+      inFile = "Itineris_th101.rdf",
+      mod = "read",
+      root = "artefact",
+      prefix = "https://thesaurus.mom.fr:443/opentheso/?idc=",
+      suffix = "&idt=th101",
+      outPlot = "collapsibleTree",
+      export.plot = FALSE,
+      outFile = NA,
+      outDir = system.file(package = "itineRis"),
+      verbose = FALSE
+    )
+
+### Arguments
+
+  ------------------ ------------------------------------------------------
+  `mod`              the way the thesaurus in handled. Default, \"read\".
+  `root`             the node under which the subgraph will be filtered
+  `prefix, suffix`   the prefix and suffix to remove.
+  `outPlot`          the type of interactive plot.
+  `export.plot`      if TRUE will export into outDir.
+  `outDir`           the output directory.
+  `verbose`          if TRUE, print messages
+  `path.thes`        the path to the thesaurus file.
+  ------------------ ------------------------------------------------------
+
+### Value
+
+an interactive plot
+
+### Examples
+
+
+    ## export the subgraph of 'artefact' in a collapsibleTree layout
+    thesaurus(root = "artefact",
+              outPlot = "collapsibleTree",
+              export.plot = T,
+              outDir = "C:/Rprojects/itineRis/results/")
+:::

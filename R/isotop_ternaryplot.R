@@ -50,7 +50,10 @@
 #'                    outDir = "C:/Rprojects/itineRis/results/", outFile = "lia_tern_2")
 #'
 #' ## Interactive
-#' isotop_ternaryplot(shiny = T)
+#' isotop_ternaryplot(run.shiny = T)
+#'
+#' ## Not interactive
+#' isotop_ternaryplot(run.shiny = F)
 #'
 #' @export
 #'
@@ -311,5 +314,3 @@ isotop_ternaryplot <- function(df = NA,
     }
   }
 }
-
-isotop_ternaryplot(run.shiny = F)
