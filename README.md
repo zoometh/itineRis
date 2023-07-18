@@ -31,7 +31,7 @@ isotop_ca(col.group = "Provenienza",
 The user can select 3 or more variables that appears both in the dataset and in the [reference thesaurus](https://github.com/zoometh/itineRis/blob/main/inst/extdata/isotops_thesaurus.csv).
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/sotop_ca-select-var.png" width='700px'>
+  <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_ca-select-var.png" width='700px'>
   <br>
   <em>Selection of variables</em>
 </p>
@@ -39,7 +39,7 @@ The user can select 3 or more variables that appears both in the dataset and in 
 The result will is: 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/sotop_ca-select-var-results.png" width='700px'>
+  <img src="https://raw.githubusercontent.com/zoometh/itineRis/main/results/isotop_ca-select-var-results.png" width='700px'>
   <br>
   <em>landing page of the interactive Plotly plot</em>
 </p>

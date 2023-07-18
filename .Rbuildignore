@@ -1,3 +1,5 @@
 results/
+doc/
+www/
 ^.*\.Rproj$
 ^\.Rproj\.user$
