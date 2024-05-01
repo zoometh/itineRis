@@ -1,4 +1,5 @@
 results/
+talks/
 doc/
 ^.*\.Rproj$
 ^\.Rproj\.user$
