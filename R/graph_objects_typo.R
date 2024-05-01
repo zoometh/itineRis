@@ -14,11 +14,13 @@
 #'
 #' @export
 graph_objects_typo <- function(data.per = NA,
-                               a.graph = 1,
-                               ext.title = TRUE,
+                               a.graph = NA,
+                               ext.title = NA,
                                LD_OB_TY_ST = TRUE,
                                only_Fibule = FALSE,
                                only_Others = FALSE, # selection on objects
+                               algo.community = "cluster_edge_betweenness",
+                               out.path.imgs = "C:/Rprojects/itineRis/talks/2024-spf/out/",
                                verbose = TRUE){
   `%>%` <- dplyr::`%>%` # used to not load dplyr
   # f.graph <- function(data.per, a.graph, ext.title){
@@ -118,15 +120,15 @@ graph_objects_typo <- function(data.per = NA,
   }
   ## Global index
   # degree distribution
-  df.ldegrees <- data.frame(n = names(degree(g)),
-                            degrees = as.numeric(degree(g)))
-  g.ldegrees <- ggplot2::ggplot(df.ldegrees, aes(x = degrees))+
+  df.ldegrees <- data.frame(n = names(igraph::degree(g)),
+                            degrees = as.numeric(igraph::degree(g)))
+  g.ldegrees <- ggplot2::ggplot(df.ldegrees, ggplot2::aes(x = degrees))+
     ggplot2::ggtitle(a.graph) +
     ggplot2::geom_histogram(colour = "black", fill = "grey", binwidth = 1) +
     # scale_x_continuous(breaks = seq(1, max(df.ldegrees$x), by = 1)) +
     ggplot2::theme_bw()
   lg[['g.ldegrees']] <- g.ldegrees
-  lg[['ldensities']] <- igraph::graph.density(g)
+  lg[['ldensities']] <- igraph::edge_density(g)
   lg[['diameter']] <- igraph::diameter(g)
   # ldegrees[[length(ldegrees)+1]] <- g.ldegrees
   # print(length(ldegrees))
@@ -136,7 +138,7 @@ graph_objects_typo <- function(data.per = NA,
   # ldiameter[[length(ldiameter)+1]] <- diameter(g)
   ##################
   set.seed(124)
-  layout.fr <- layout_with_fr(g)
+  layout.fr <- igraph::layout_with_fr(g)
   ################################################################
   ## raw graph
   name.out <- paste0(out.path.imgs, a.graph,"_graph_", xt,".png")
@@ -148,13 +150,13 @@ graph_objects_typo <- function(data.per = NA,
   par(mar=c(0, 0, 2, 0))
   g.out <- plot(g,
                 layout = layout.fr,
-                labels = V(g)$name,
+                labels = igraph::V(g)$name,
                 vertex.label.color = "black",
                 vertex.label.family = "sans",
-                vertex.label.font = V(g)$font,
+                vertex.label.font = igraph::V(g)$font,
                 vertex.label.cex = .5,
-                vertex.shape = V(g)$shape,
-                vertex.color = V(g)$color,
+                vertex.shape = igraph::V(g)$shape,
+                vertex.color = igraph::V(g)$color,
                 vertex.size = 10,
                 # vertex.size = degree(g)+5,
                 vertex.frame.color = NA,
@@ -164,121 +166,130 @@ graph_objects_typo <- function(data.per = NA,
                 # edge.label.family = "sans",
                 edge.arrow.size = .5,
                 edge.color = "darkgrey",
-                edge.width = E(g)$n
+                edge.width = igraph::E(g)$n
   )
-  library(ggraph)
-  # Assuming 'g' is your igraph object
-  ggraph(g, layout = "fr") +
-    geom_node_point(aes(color = color, size = 10, shape = shape), show.legend = FALSE) +
-    geom_node_text(aes(label = name, color = color), repel = TRUE,
-                   fontface = "plain", family = "sans", size = 3.5) +
-    geom_edge_link(aes(width = n, color = "darkgrey"), arrow = arrow(length = unit(0.5, "cm")),
-                   end_cap = circle(3, 'mm')) +
-    theme_graph() +
-    scale_edge_width(range = c(0.5, 2))
-
-
-  title(per.title, font.main = 1.5)
+  title(main = paste0(per.title, "\n", algo.community),
+        font.main = 1.5)
   print(g.out)
   dev.off()
-  print("     - graph output exported")
-  lg[['g.out']] <- g.out
+  print(paste("     - graph output exported", algo.community))
+  # ## Other way ##
+  # # library(ggraph)
+  # gtypo <- ggraph::ggraph(g, layout = "fr") +
+  #   ggraph::geom_edge_link(aes(width = n, color = "darkgrey"),
+  #                          arrow = arrow(length = unit(0.5, "cm")),
+  #                          end_cap = circle(3, 'mm')) +
+  #   ggraph::geom_node_point(aes(color = color, size = 10, shape = shape),
+  #                           show.legend = FALSE) +
+  #   ggraph::geom_node_text(aes(label = name, color = "black"), # color
+  #                          repel = TRUE,
+  #                          fontface = "plain",
+  #                          family = "sans",
+  #                          size = 3.5) +
+  #   ggraph::scale_edge_width(range = c(0.5, 2),
+  #                            breaks = c(1, 2, 5, 10, 15)) +
+  #   ggplot2::scale_shape_manual(values = c("circle" = 16,
+  #                                          "square" = 15,
+  #                                          "triangle" = 17,
+  #                                          "star" = 8)) +
+  #   ggplot2::labs(title = a.graph, caption = ext.title) +
+  #   ggplot2::guides(color = "none",
+  #                   edge_color = "none") +  # Remove edge color from legend
+  #   ggplot2::scale_color_identity() +
+  #   ggraph::theme_graph()
+  # lg[['gtypo']] <- gtypo
 
-
-  # raw map
-  sites.coordinates <- as.data.frame(unique(data[data$`Lieu-dit` %in% nds.sites$name,
-                                                 c("Lieu-dit", "x", "y")]))
-  names(sites.coordinates) <- c("name", "x", "y")
-  sites.coordinates$x <- as.numeric(sites.coordinates$x)
-  sites.coordinates$y <- as.numeric(sites.coordinates$y)
-  sites.xy.community <- sites.coordinates
-  sp.local <- bck.stamen.sp %>%
-    ggmap() +
-    ggtitle(per.title) +
-    geom_point(data=sites.xy.community,
-               aes(x = x, y = y), color = "black",
-               size = 2) +
-    geom_text_repel(data=sites.xy.community,
-                    aes(x = x, y = y, label = name), color = "black", cex = 3.5)
-  name.out <- paste0(out.path.imgs, a.graph, "_zCD_spat_", xt,".png")
-  ggsave(name.out, sp.local)
-  print(paste("     - map output exported", name.out))
-  ######################################################################################
   ## community detection
-  #
-  for (algo.community in algos.community){
-    # algo.community <- c("edge.betweenness.community")
-    g <- as.undirected(g) # convert to undir
-    op <- paste0(algo.community,"(g)")
-    g_community <- eval(parse(text=op))
-    n.membership <- length(unique(g_community$membership))
-    # g_community <- fastgreedy.community(g)
-    name.out <- paste0(out.path.imgs, a.graph, "_zCD_", algo.community, "_graph_", xt,".png")
-    png(name.out,
-        width = 25,
-        height = 14,
-        units = "cm",
-        res = 300)
-    par(mar=c(0, 0, 2, 0))
-    # rcolors <- c("red", "blue", "darkpink", "orange", "darkgreen", "purple", "brown")
-    nodes.colors <- rainbow(n.membership)[membership(g_community)]
-    comm.colors <- rainbow(n.membership, alpha=.3)
-    g.out <- plot(g_community,
-                  layout = layout.fr,
-                  g,
-                  vertex.label.color = "black",
-                  vertex.label.family = "sans",
-                  vertex.label.font = V(g)$font,
-                  vertex.label.cex = .5,
-                  vertex.shape = V(g)$shape,
-                  vertex.color = V(g)$color,
-                  vertex.size = 10,
-                  # vertex.size = degree(g)+5,
-                  vertex.frame.color = NA,
-                  edge.color = "darkgrey",
-                  # edge.width = E(g)$n,
-                  col=nodes.colors,
-                  mark.col=comm.colors,
-                  mark.border=NA
-    )
-    title(main = paste0(per.title, "\n", algo.community),
-          font.main = 1.5)
-    print(g.out)
-    dev.off()
-    print(paste("     - graph output exported", algo.community))
-
-    # spatial
-    # get index of sites (= first position)
-    sites.idx <- match(nds.sites$name, V(g)$name)
-    # use index to get communities
-    sites.communities <- g_community$membership[sites.idx]
-    nodes.colors <- rainbow(n.membership)[membership(g_community)]
-    sites.colors <- nodes.colors[sites.idx] # sites colors
-    sites.membership <- data.frame(name = nds.sites$name,
-                                   community = sites.communities,
-                                   color = sites.colors)
-    sites.coordinates <- as.data.frame(unique(data[data$`Lieu-dit` %in% nds.sites$name,
-                                                   c("Lieu-dit", "x", "y")]))
-    names(sites.coordinates) <- c("name", "x", "y")
-    sites.coordinates$x <- as.numeric(sites.coordinates$x)
-    sites.coordinates$y <- as.numeric(sites.coordinates$y)
-    # merge
-    sites.xy.community <- merge(sites.coordinates, sites.membership, by = "name")
-    sp.local <- bck.stamen.sp %>%
-      ggmap() +
-      ggtitle(per.title, subtitle = algo.community) +
-      geom_point(data=sites.xy.community,
-                 aes(x = x, y = y, color = color),
-                 size = 2) +
-      geom_text_repel(data=sites.xy.community,
-                      aes(x = x, y = y, color = color, label = name), cex = 3.5) +
-      scale_color_identity()
-    name.out <- paste0(out.path.imgs, a.graph, "_zCD_", algo.community, "_spat_", xt,".png")
-    ggsave(name.out, sp.local)
-    print(paste("     - map community output exported", algo.community))
+  if(verbose){
+    print(paste0("community detection"))
   }
-  lG <- list("ldegrees" = ldegrees,
-             "ldensities" = ldensities,
-             "ldiameter" = ldiameter)
+  # for (algo.community in algos.community){
+  # algo.community <- c("edge.betweenness.community")
+  g <- igraph::as.undirected(g) # convert to undir
+  op <- paste0("igraph::", algo.community,"(g)")
+  if(verbose){
+    print(paste0("Evaluate: '", op, "'"))
+  }
+  g_community <- eval(parse(text=op))
+  n.membership <- length(unique(g_community$membership))
+  # g_community <- fastgreedy.community(g)
+  name.out <- paste0(out.path.imgs, a.graph, "_zCD_", algo.community, "_graph_", xt,".png")
+  png(name.out,
+      width = 25,
+      height = 14,
+      units = "cm",
+      res = 300)
+  par(mar=c(0, 0, 2, 0))
+  # rcolors <- c("red", "blue", "darkpink", "orange", "darkgreen", "purple", "brown")
+  nodes.colors <- rainbow(n.membership)[igraph::membership(g_community)]
+  comm.colors <- rainbow(n.membership, alpha=.3)
+
+  # ## Other way ##
+  # ggraph::ggraph(g, layout = "fr") +
+  #   ggraph::geom_edge_link(ggplot2::aes(color = "darkgrey"), width = 1, alpha = 0.8) +
+  #   ggraph::geom_node_point(ggplot2::aes(color = color, shape = shape, size = 10)) +
+  #   ggraph::geom_node_text(ggplot2::aes(label = name, fontface = font), color = "black", size = 5) +
+  #   ggplot2::scale_color_manual(values = igraph::V(g)$color) +
+  #   ggplot2::ggtitle(paste0("Your Title", "\n", "Sub Title")) +
+  #   ggplot2::theme_void()  # Clean theme
+
+  g.out <- plot(g_community,
+                layout = layout.fr,
+                g,
+                vertex.label.color = "black",
+                vertex.label.family = "sans",
+                vertex.label.font = igraph::V(g)$font,
+                vertex.label.cex = .5,
+                vertex.shape = igraph::V(g)$shape,
+                vertex.color = igraph::V(g)$color,
+                vertex.size = 10,
+                # vertex.size = degree(g)+5,
+                vertex.frame.color = NA,
+                edge.color = "darkgrey",
+                # edge.width = E(g)$n,
+                col = nodes.colors,
+                mark.col = comm.colors,
+                mark.border = NA
+  )
+  title(main = paste0(per.title, "\n", algo.community),
+        font.main = 1.5)
+  print(g.out)
+  dev.off()
+  print(paste("     - graph output exported", algo.community))
+
+  # # spatial
+  # # get index of sites (= first position)
+  # sites.idx <- match(nds.sites$name, igraph::V(g)$name)
+  # # use index to get communities
+  # sites.communities <- g_community$membership[sites.idx]
+  # nodes.colors <- rainbow(n.membership)[igraph::membership(g_community)]
+  # sites.colors <- nodes.colors[sites.idx] # sites colors
+  # sites.membership <- data.frame(name = nds.sites$name,
+  #                                community = sites.communities,
+  #                                color = sites.colors)
+  # sites.coordinates <- as.data.frame(unique(data[data$`Lieu-dit` %in% nds.sites$name,
+  #                                                c("Lieu-dit", "x", "y")]))
+  # names(sites.coordinates) <- c("name", "x", "y")
+  # sites.coordinates$x <- as.numeric(sites.coordinates$x)
+  # sites.coordinates$y <- as.numeric(sites.coordinates$y)
+  # # merge
+  # sites.xy.community <- merge(sites.coordinates, sites.membership, by = "name")
+  # sp.local <- bck.stamen.sp %>%
+  #   ggmap::ggmap() +
+  #   ggtitle(per.title, subtitle = algo.community) +
+  #   geom_point(data=sites.xy.community,
+  #              aes(x = x, y = y, color = color),
+  #              size = 2) +
+  #   geom_text_repel(data=sites.xy.community,
+  #                   aes(x = x, y = y, color = color, label = name), cex = 3.5) +
+  #   scale_color_identity()
+  # name.out <- paste0(out.path.imgs, a.graph, "_zCD_", algo.community, "_spat_", xt,".png")
+  # ggsave(name.out, sp.local)
+  # print(paste("     - map community output exported", algo.community))
+  #
+  #
+  # lG <- list("ldegrees" = ldegrees,
+  #            "ldensities" = ldensities,
+  #            "ldiameter" = ldiameter)
   return(lG)
 }
